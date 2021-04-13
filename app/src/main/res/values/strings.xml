@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">VIA_SEP4</string>
+    <string name="menu_settings">Settings</string>
+    <string name="general_info">General Info</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="tempMain">Temperature</string>
+    <string name="humMain">Humidity</string>
+    <string name="dioxideMain">CO2</string>
+    <string name="lightMain">Light</string>
 </resources>
