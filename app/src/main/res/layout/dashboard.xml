@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:translationZ="0dp"
+    tools:context=".DashboardActivity">
+
+    <ImageButton
+        android:id="@+id/buttonAddMushroom"
+        android:layout_width="70dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="140dp"
+        android:background="@android:drawable/ic_menu_add"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/ic_menu_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:onClick="AddMushroom"
+        android:translationZ="5dp"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#FFAE58"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:translationZ="3dp"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:translationZ="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/buttonInfo"
+                android:layout_width="96dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/infoicon"
+                android:scaleType="fitXY"
+                android:clickable="true"
+                android:translationZ="10dp"
+                android:onClick="NavigateGeneralInfo"
+                android:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="114dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="0dp"
+                android:ems="10"
+                android:translationZ="4dp"
+                android:inputType="textPersonName"
+                android:text="General Info"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textIsSelectable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical"
+            android:translationZ="3dp"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout4">
+
+            <ImageButton
+                android:id="@+id/buttonDashboard"
+                android:layout_width="96dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/dashboard"
+                android:scaleType="fitXY"
+                android:clickable="true"
+                android:translationZ="10dp"
+                android:onClick="NavigateDashboard"
+                app:srcCompat="@drawable/dashboard" />
+
+            <TextView
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="113dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="0dp"
+                android:ems="10"
+                android:translationZ="4dp"
+                android:inputType="textPersonName"
+                android:text="Dashboard"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textIsSelectable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:orientation="vertical"
+            android:translationZ="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/buttonSettings"
+                android:layout_width="96dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/settings"
+                android:onClick="NavigateSettings"
+                android:scaleType="fitXY"
+                android:translationZ="10dp"
+                app:srcCompat="@drawable/settings" />
+
+            <TextView
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="113dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:ems="10"
+                android:translationZ="4dp"
+                android:inputType="textPersonName"
+                android:text="Settings"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textIsSelectable="false" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="404dp"
+        android:layout_height="575dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="1dp"
+        android:fillViewport="true"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationZ="2dp">
+
+            <TableRow
+                android:id="@+id/dashboardRow1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:translationZ="2dp"
+                tools:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/containerMushroom1"
+                    android:layout_width="130dp"
+                    android:layout_height="150dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/imageButton8"
+                        android:layout_width="97dp"
+                        android:layout_height="92dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="27dp"
+                        android:background="@drawable/shroom"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:scaleType="fitXY"
+                        android:translationZ="3dp" />
+
+                    <TextView
+                        android:id="@+id/editTextTextPersonName4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:ems="10"
+                        android:text="Shroom1"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:translationZ="2dp" />
+                </LinearLayout>
+
+            </TableRow>
+
+        </TableLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutMushrooms"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
