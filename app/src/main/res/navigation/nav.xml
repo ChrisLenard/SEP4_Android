@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/signIn">
+
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="via.sep4.Dashboard"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/viewSpecimen"
+        android:name="via.sep4.ViewSpecimen"
+        android:label="fragment_view_specimen"
+        tools:layout="@layout/fragment_view_specimen" />
+    <fragment
+        android:id="@+id/signIn"
+        android:name="via.sep4.SignIn"
+        android:label="SignIn"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signIn_to_dashboard"
+            app:destination="@id/dashboard" />
+    </fragment>
+</navigation>
