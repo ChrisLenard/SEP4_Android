@@ -2,7 +2,9 @@ package via.sep4;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -43,7 +45,7 @@ public class DashboardActivity extends AppCompatActivity {
         row1 = (TableRow)findViewById(R.id.dashboardRow1);
         tableLayout = (TableLayout)findViewById(R.id.table);
 
-        dashboardActivityViewModel = ViewModelProviders.of(this).get(DashboardActivityViewModel.class);
+        dashboardActivityViewModel = new ViewModelProvider(this).get(DashboardActivityViewModel.class);
         dashboardActivityViewModel.setData(this,row1,(ImageButton)findViewById(R.id.imageButton8),getDrawable(R.drawable.shroom),(TextView) findViewById(R.id.editTextTextPersonName4),(LinearLayout)findViewById(R.id.containerMushroom1));
         dashboardActivityViewModel.addMushroom(new Mushroom("Latticed Stinkhorn"));
         dashboardActivityViewModel.addMushroom(new Mushroom("Treehugger"));
@@ -52,6 +54,8 @@ public class DashboardActivity extends AppCompatActivity {
         //dashboardActivityViewModel.reSetUpGrid() //Only for testing;
         UpdateGrid();
     }
+
+
 
     public void UpdateGrid(){
         tableLayout.removeAllViews();
@@ -109,5 +113,11 @@ public class DashboardActivity extends AppCompatActivity {
         }
         ((ViewManager)containerToRemove.getParent()).removeView(containerToRemove);
 
+    }
+
+    public void clickHandlerCell(View view) {
+        view.getTag();
+        NavController nav = Navigation.findNavController(view);
+        nav.navigate(R.id.action_dashboard_to_viewSpecimen);
     }
 }

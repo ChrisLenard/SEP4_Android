@@ -59,6 +59,8 @@ public class ViewSpecimen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Mushroom mushroom = (Mushroom) getArguments().getSerializable("mushroom");
+
         return inflater.inflate(R.layout.fragment_view_specimen, container, false);
     }
 }
