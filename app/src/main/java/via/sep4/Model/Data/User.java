@@ -1,14 +1,44 @@
 package via.sep4.Model.Data;
 
 public class User {
+
     /**
      * @author Kristóf Lénárd
      * @version 1.0
      * This class is responsible for storing Users. It does not store passwords to ensure higher secrecy.
      */
-
+    private int user_key;
     private String username;
-    private boolean isValidated;
+    private String password;
+    private String user_type;
+    //private boolean isValidated;
+
+    public User() {
+    }
+
+    public int getUser_key() {
+        return user_key;
+    }
+
+    public void setUser_key(int user_key) {
+        this.user_key = user_key;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
 
     public String getUsername() {
         return username;
@@ -18,7 +48,7 @@ public class User {
         this.username = username;
     }
 
-    public boolean isValidated() {
+    /*public boolean isValidated() {
         return isValidated;
     }
 
@@ -36,5 +66,5 @@ public class User {
         }
         else s += "not valid.";
         return s;
-    }
+    }*/
 }
