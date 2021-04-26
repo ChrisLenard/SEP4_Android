@@ -3,9 +3,10 @@ package via.sep4;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Mushroom {
+public class Mushroom implements Serializable {
     private String name;
     private TableRow parent;
     private LinearLayout container;

@@ -183,7 +183,9 @@
             android:id="@+id/table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:translationZ="2dp">
+            android:translationZ="2dp"
+            android:clickable="true"
+            android:onClick="clickHandlerCell">
 
             <TableRow
                 android:id="@+id/dashboardRow1"

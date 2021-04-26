@@ -9,7 +9,11 @@
         android:id="@+id/dashboard"
         android:name="via.sep4.Dashboard"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_viewSpecimen"
+            app:destination="@id/viewSpecimen" />
+    </fragment>
     <fragment
         android:id="@+id/viewSpecimen"
         android:name="via.sep4.ViewSpecimen"
