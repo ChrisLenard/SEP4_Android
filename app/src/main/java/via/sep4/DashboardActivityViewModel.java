@@ -1,8 +1,10 @@
 package via.sep4;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -17,6 +19,8 @@ import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +48,6 @@ public class DashboardActivityViewModel extends ViewModel {
         this.shroomButtonImage = shroomButtonImage;
         this.shroomTextView = shroomText;
         this.shroomContainer = shroomContainer;
-
         setUpGrid();
     }
 
@@ -193,6 +196,7 @@ public class DashboardActivityViewModel extends ViewModel {
     }
     //Used to create a container for mushroom
     private LinearLayout createNewMushroomContainer(Mushroom mushroom){
+        NavController nav = new NavController(context); //Need view object here, not accessible in viewmodel :(
         String mushroomName = mushroom.getName();
         //ImageButton for new shroom
         ImageButton newShroomButton = new ImageButton(context);
@@ -204,6 +208,14 @@ public class DashboardActivityViewModel extends ViewModel {
         newShroomButton.setBackground(shroomButtonImage);
         newShroomButton.setClickable(true);
         newShroomButton.setScaleType(ImageView.ScaleType.FIT_XY);
+        newShroomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("mushroom",mushroom);
+                nav.navigate(R.id.action_dashboard_to_viewSpecimen,bundle);
+            }
+        });
 
 
         //TextView for new shroom
