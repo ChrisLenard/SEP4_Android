@@ -11,20 +11,20 @@ public class SensorDataList
      * This class is a list class for all sensor data associated with a given specimen.
      */
 
-    private ArrayList<SensorData> sensorData;
+    private ArrayList<Specimen> sensorData;
 
     public SensorDataList()
     {
-        sensorData = new ArrayList<SensorData>();
+        sensorData = new ArrayList<Specimen>();
         //when needed, write retrieval methods - from webservice or local persistence
     }
 
-    public ArrayList<SensorData> getList()
+    public ArrayList<Specimen> getList()
     {
         return sensorData;
     }
 
-    public void addToList(SensorData s)
+    public void addToList(Specimen s)
     {
         sensorData.add(s);
     }

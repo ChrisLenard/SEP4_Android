@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 import java.net.InetAddress;
 
 import via.sep4.Model.Data.SensorDataList;
+import via.sep4.Model.Data.Specimen;
 import via.sep4.Model.PersistenceHandler;
 import via.sep4.Model.WebHandler;
 
@@ -36,15 +37,20 @@ public class ViewSpecimenViewModel extends ViewModel
         return sensorLiveData;
     }
 
-    private void setSensorLiveData()
+    /*private void setSensorLiveData()
     {
         sensorLiveData.setValue(getSensorData());
+    }*/
+
+    private void addSensorLiveData()
+    {
+
     }
 
-    public SensorDataList getSensorData()
+    public Specimen getSensorData()
     {
         //TODO: write internet checker
-        return webHandler.getAllSensorData(specimenKey);
+        return webHandler.getSpecimen(specimenKey);
     }
 
     public SensorDataList getLocalSensorData()

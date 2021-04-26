@@ -1,6 +1,9 @@
 package via.sep4.Model;
 
-import via.sep4.Model.Data.SensorDataList;
+
+import java.io.IOException;
+import via.sep4.Model.Data.Specimen;
+import via.sep4.Persistence.WebClient;
 
 public class WebHandler {
     /**
@@ -9,9 +12,18 @@ public class WebHandler {
      * This class connects the application data and the REST client.
      */
 
-    public SensorDataList getAllSensorData(int specimenKey)
+    public Specimen getSpecimen(int specimenKey)
     {
-        //TODO: write sensor data getter w/ WebClient
-        return null;
+        Specimen s = new Specimen();
+        try
+        {
+            s = WebClient.getSpecimenAPI().getSpecimen(specimenKey).execute().body();
+        }
+
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return s;
     }
 }
