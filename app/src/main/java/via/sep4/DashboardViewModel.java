@@ -21,7 +21,9 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardActivityViewModel extends ViewModel {
+import via.sep4.Model.Mushroom;
+
+public class DashboardViewModel extends ViewModel {
     //List containing all mushrooms
     private MutableLiveData<List<Mushroom>> mList;
     //List containing all generated rows

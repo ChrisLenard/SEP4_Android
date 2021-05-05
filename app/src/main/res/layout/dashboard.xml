@@ -9,7 +9,7 @@
     tools:context=".DashboardActivity">
 
     <ImageButton
-        android:id="@+id/buttonAddMushroom"
+        android:id="@+id/btnAddMushroom"
         android:layout_width="70dp"
         android:layout_height="64dp"
         android:layout_marginBottom="140dp"
@@ -170,37 +170,35 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="20dp"
         android:fillViewport="true"
         android:translationZ="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
-            android:id="@+id/table"
+            android:id="@+id/dashboardTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:translationZ="2dp">
 
             <TableRow
-                android:id="@+id/dashboardRow1"
+                android:id="@+id/dashboardTableRow1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:translationZ="2dp"
                 android:visibility="gone">
 
                 <LinearLayout
-                    android:id="@+id/containerMushroom1"
+                    android:id="@+id/containerMushroom"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="visible">
 
                     <ImageButton
-                        android:id="@+id/imageButton8"
+                        android:id="@+id/mushroomButton"
                         android:layout_width="97dp"
                         android:layout_height="92dp"
                         android:layout_marginStart="16dp"
@@ -213,7 +211,7 @@
                         android:translationZ="3dp" />
 
                     <TextView
-                        android:id="@+id/editTextTextPersonName4"
+                        android:id="@+id/mushroomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"

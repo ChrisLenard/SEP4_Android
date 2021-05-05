@@ -2,25 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/fragment_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:translationZ="0dp"
+    android:tag="DASH"
     tools:context=".Dashboard">
 
     <ImageButton
-        android:id="@+id/buttonAddMushroom"
+        android:id="@+id/btnAddMushroom"
         android:layout_width="70dp"
         android:layout_height="64dp"
         android:layout_marginBottom="140dp"
         android:background="@android:drawable/ic_menu_add"
+        android:clickable="true"
         android:scaleType="fitXY"
         android:src="@android:drawable/ic_menu_add"
+        android:tint="@color/black"
+        android:translationZ="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:clickable="true"
-        android:translationZ="5dp"
-        android:tint="@color/black"
         app:srcCompat="@android:drawable/ic_menu_add" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -171,27 +172,27 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
-            android:id="@+id/table"
+            android:id="@+id/dashboardTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:translationZ="2dp">
 
             <TableRow
-                android:id="@+id/dashboardRow1"
+                android:id="@+id/dashboardTableRow1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:translationZ="2dp"
                 android:visibility="gone">
 
                 <LinearLayout
-                    android:id="@+id/containerMushroom1"
+                    android:id="@+id/containerMushroom"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="visible">
 
                     <ImageButton
-                        android:id="@+id/imageButton8"
+                        android:id="@+id/mushroomButton"
                         android:layout_width="97dp"
                         android:layout_height="92dp"
                         android:layout_marginStart="16dp"
@@ -203,7 +204,7 @@
                         android:translationZ="3dp" />
 
                     <TextView
-                        android:id="@+id/editTextTextPersonName4"
+                        android:id="@+id/mushroomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
