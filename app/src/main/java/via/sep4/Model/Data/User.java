@@ -11,7 +11,6 @@ public class User {
     private String username;
     private String password;
     private String user_type;
-    //private boolean isValidated;
 
     public User() {
     }
@@ -47,24 +46,4 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    /*public boolean isValidated() {
-        return isValidated;
-    }
-
-    public void setValidated(boolean validated) {
-        isValidated = validated;
-    }
-
-    @Override
-    public String toString() {
-
-        String s = "Current user: " + username + ", Validation status: ";
-        if (isValidated)
-        {
-            s += "valid.";
-        }
-        else s += "not valid.";
-        return s;
-    }*/
 }

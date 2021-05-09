@@ -3,6 +3,7 @@ package via.sep4.Model;
 
 import java.io.IOException;
 import via.sep4.Model.Data.Specimen;
+import via.sep4.Model.Data.User;
 import via.sep4.Persistence.WebClient;
 
 public class WebHandler {
@@ -25,5 +26,11 @@ public class WebHandler {
             e.printStackTrace();
         }
         return s;
+    }
+
+    public void token(User user)
+    {
+        String auth = user.getUsername() + ":" + user.getPassword();
+        WebClient.token(auth);
     }
 }
