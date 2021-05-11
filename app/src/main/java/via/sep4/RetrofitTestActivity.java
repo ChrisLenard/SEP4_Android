@@ -55,6 +55,7 @@ public class RetrofitTestActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("OnCreate", "ONCREATE TRIGGERED = RETROFIT ACTIVITY");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -69,7 +70,7 @@ public class RetrofitTestActivity extends Fragment {
                 if(response.code() != 200){
                     textViewUserBob.setText("Check Connection");
                 }else{
-                    Log.e("RESPONSE", "Response= "+response.body().getUsername());
+                    Log.i("RESPONSE", "Response= "+response.body().getUsername());
                     String responseText = "";
                     responseText = response.body().getUsername();
                     textViewUserBob.setText(responseText);

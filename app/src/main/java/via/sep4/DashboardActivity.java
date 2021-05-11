@@ -19,9 +19,6 @@ import via.sep4.Model.Mushroom;
 
 
 public class DashboardActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
-    ImageButton buttonInfo;
-    ImageButton buttonDashboard;
-    ImageButton buttonSettings;
     ImageButton buttonAddMushroom;
     TableLayout tableLayout;
     TableRow row1;
@@ -34,9 +31,6 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_dashboard);
-        buttonInfo = (ImageButton)findViewById(R.id.buttonInfo);
-        buttonDashboard = (ImageButton)findViewById(R.id.buttonDashboard);
-        buttonSettings = (ImageButton)findViewById(R.id.buttonSettings);
         buttonAddMushroom = (ImageButton)findViewById(R.id.btnAddMushroom);
         row1 = (TableRow)findViewById(R.id.dashboardTableRow1);
         tableLayout = (TableLayout)findViewById(R.id.dashboardTable);
@@ -62,19 +56,6 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
         for (TableRow row: dashboardViewModel.getGrid()) {
             tableLayout.addView(row);
         }
-    }
-
-    public void NavigateDashboard(View view) {
-        Intent intentActivityAddMushroom = new Intent(DashboardActivity.this,MainActivity.class);
-        startActivity(intentActivityAddMushroom);
-    }
-    public void NavigateGeneralInfo(View view) {
-        Intent intentActivityAddMushroom = new Intent(DashboardActivity.this,MainActivity.class);
-        startActivity(intentActivityAddMushroom);
-    }
-    public void NavigateSettings(View view) {
-        Intent intentActivityAddMushroom = new Intent(DashboardActivity.this,MainActivity.class);
-        startActivity(intentActivityAddMushroom);
     }
 
 

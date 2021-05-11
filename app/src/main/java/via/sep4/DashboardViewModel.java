@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -206,7 +207,12 @@ public class DashboardViewModel extends ViewModel {
         newShroomButton.setBackground(shroomButtonImage);
         newShroomButton.setClickable(true);
         newShroomButton.setScaleType(ImageView.ScaleType.FIT_XY);
-
+        newShroomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox,new ViewSpecimen(mushroom)).commit();
+            }
+        });
 
         //TextView for new shroom
         TextView newShroomText = new TextView(context);

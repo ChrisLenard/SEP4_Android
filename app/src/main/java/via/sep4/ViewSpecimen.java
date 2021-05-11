@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import via.sep4.Model.Mushroom;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,9 +26,14 @@ public class ViewSpecimen extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private Mushroom mushroom;
+    private View v;
     public ViewSpecimen() {
         // Required empty public constructor
+    }
+
+    public ViewSpecimen(Mushroom mushroom){
+        this.mushroom = mushroom;
     }
 
     /**
@@ -58,7 +66,10 @@ public class ViewSpecimen extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_specimen, container, false);
+        v = inflater.inflate(R.layout.fragment_view_specimen, container, false);
+
+        TextView mushroomName = v.findViewById(R.id.MushroomName);
+        mushroomName.setText(mushroom.getName());
+        return v;
     }
 }

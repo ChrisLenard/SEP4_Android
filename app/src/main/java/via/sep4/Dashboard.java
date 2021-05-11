@@ -27,9 +27,6 @@ import via.sep4.Model.Mushroom;
  */
 public class Dashboard extends Fragment implements AddMushroomDialogFragment.AddMushroomDialogListener {
 
-    ImageButton buttonInfo;
-    ImageButton buttonDashboard;
-    ImageButton buttonSettings;
     ImageButton buttonAddMushroom;
     TableLayout tableLayout;
     TableRow row1;
@@ -84,10 +81,7 @@ public class Dashboard extends Fragment implements AddMushroomDialogFragment.Add
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_dashboard,container,false);
-        buttonInfo = (ImageButton)v.findViewById(R.id.buttonInfo);
-        buttonDashboard = (ImageButton)v.findViewById(R.id.buttonDashboard);
         buttonAddMushroom = (ImageButton)v.findViewById(R.id.btnAddMushroom);
-        buttonSettings = (ImageButton)v.findViewById(R.id.buttonSettings);
         row1 = (TableRow)v.findViewById(R.id.dashboardTableRow1);
         tableLayout = (TableLayout)v.findViewById(R.id.dashboardTable);
         buttonAddMushroom = (ImageButton)v.findViewById(R.id.btnAddMushroom);
@@ -127,6 +121,7 @@ public class Dashboard extends Fragment implements AddMushroomDialogFragment.Add
             TableRow rowToUpdate = (TableRow)view.findViewById(tableRowIds.get(i));
         }
         ((ViewManager)containerToRemove.getParent()).removeView(containerToRemove);
+        UpdateGrid();
 
     }
     //Pops up AddMushroom Dialog
