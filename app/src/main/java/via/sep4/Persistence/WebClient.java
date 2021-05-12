@@ -3,6 +3,9 @@ package via.sep4.Persistence;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -29,12 +32,13 @@ public class WebClient {
             = new HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY);
 
-    private static final String tempJWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiIxIiwibmJmIjoxNjE3ODA5MDk4LCJleHAiOjE4OTM0NTI0MDAsImlhdCI6MTYxNzgwOTA5OH0.YHBQxZOg73Vmm3n6iKH7Ew4rJ9t0Q7VUakFriTsdpig";
+    private static String tempJWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiIxIiwibmJmIjoxNjE3ODA5MDk4LCJleHAiOjE4OTM0NTI0MDAsImlhdCI6MTYxNzgwOTA5OH0.YHBQxZOg73Vmm3n6iKH7Ew4rJ9t0Q7VUakFriTsdpig";
 
-    private static final SpecimenAPI specimenAPI = createService(SpecimenAPI.class, tempJWT);
-    private static final UserAPI userAPI = createService(UserAPI.class, tempJWT);
-    private static final HardwareAPI hardwareAPI = createService(HardwareAPI.class, tempJWT);
-    private static final StatusAPI statusAPI = createService(StatusAPI.class, tempJWT);
+    private static SpecimenAPI specimenAPI = createService(SpecimenAPI.class);
+    private static UserAPI userAPI = createService(UserAPI.class);
+    private static HardwareAPI hardwareAPI = createService(HardwareAPI.class);
+    private static StatusAPI statusAPI = createService(StatusAPI.class);
+    private static final MiscAPI miscAPI = createService(MiscAPI.class);
 
     public static <S> S createService(Class<S> serviceClass) {
         if (!httpClient.interceptors().contains(logging)) {
@@ -46,8 +50,8 @@ public class WebClient {
     }
 
     public static <S> S createService(Class<S> serviceClass, final String token) {
+        httpClient.interceptors().clear();
         if (token != null) {
-            httpClient.interceptors().clear();
             httpClient.addInterceptor( chain -> {
                 Request original = chain.request();
                 Request.Builder builder1 = original.newBuilder()
@@ -77,5 +81,31 @@ public class WebClient {
 
     public static StatusAPI getStatusAPI() {
         return statusAPI;
+    }
+
+    public static MiscAPI getMiscAPI() {
+        return miscAPI;
+    }
+
+    public static void token(String auth)
+    {
+        Call<String> tokenCall = getMiscAPI().getToken(auth);
+        tokenCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.body() != null) {
+                    tempJWT = response.body();
+                }
+                specimenAPI = createService(SpecimenAPI.class, tempJWT);
+                userAPI = createService(UserAPI.class, tempJWT);
+                hardwareAPI = createService(HardwareAPI.class, tempJWT);
+                statusAPI = createService(StatusAPI.class, tempJWT);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 }
