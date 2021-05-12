@@ -1,18 +1,14 @@
 package via.sep4;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.view.ViewManager;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -21,11 +17,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import via.sep4.Model.Mushroom;
 
-public class DashboardActivity extends AppCompatActivity {
-    ImageButton buttonInfo;
-    ImageButton buttonDashboard;
-    ImageButton buttonSettings;
+
+public class DashboardActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
     ImageButton buttonAddMushroom;
     TableLayout tableLayout;
     TableRow row1;
@@ -33,24 +28,28 @@ public class DashboardActivity extends AppCompatActivity {
     ArrayList<String> mushrooms = new ArrayList();
     ArrayList<Integer> tableRowIds = new ArrayList();
 
-    DashboardActivityViewModel dashboardActivityViewModel;
+    DashboardViewModel dashboardViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dashboard);
-        buttonInfo = (ImageButton)findViewById(R.id.buttonInfo);
-        buttonDashboard = (ImageButton)findViewById(R.id.buttonDashboard);
-        buttonSettings = (ImageButton)findViewById(R.id.buttonSettings);
-        buttonAddMushroom = (ImageButton)findViewById(R.id.buttonAddMushroom);
-        row1 = (TableRow)findViewById(R.id.dashboardRow1);
-        tableLayout = (TableLayout)findViewById(R.id.table);
+        setContentView(R.layout.fragment_dashboard);
+        buttonAddMushroom = (ImageButton)findViewById(R.id.btnAddMushroom);
+        row1 = (TableRow)findViewById(R.id.dashboardTableRow1);
+        tableLayout = (TableLayout)findViewById(R.id.dashboardTable);
 
-        dashboardActivityViewModel = new ViewModelProvider(this).get(DashboardActivityViewModel.class);
-        dashboardActivityViewModel.setData(this,row1,(ImageButton)findViewById(R.id.imageButton8),getDrawable(R.drawable.shroom),(TextView) findViewById(R.id.editTextTextPersonName4),(LinearLayout)findViewById(R.id.containerMushroom1));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Latticed Stinkhorn"));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Treehugger"));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Puffball"));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Indigo Milkcap"));
+        dashboardViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
+        dashboardViewModel.setData(this,row1,(ImageButton)findViewById(R.id.mushroomButton),getDrawable(R.drawable.shroom),(TextView) findViewById(R.id.mushroomText),(LinearLayout)findViewById(R.id.containerMushroom));
+        dashboardViewModel.addMushroom(new Mushroom("Latticed Stinkhorn"));
+        dashboardViewModel.addMushroom(new Mushroom("Treehugger"));
+        dashboardViewModel.addMushroom(new Mushroom("Puffball"));
+        dashboardViewModel.addMushroom(new Mushroom("Indigo Milkcap"));
+        buttonAddMushroom.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openAddMushroomDialog(v);
+            }
+        });
+		
         //dashboardActivityViewModel.reSetUpGrid() //Only for testing;
         UpdateGrid();
     }
@@ -59,49 +58,16 @@ public class DashboardActivity extends AppCompatActivity {
 
     public void UpdateGrid(){
         tableLayout.removeAllViews();
-        for (TableRow row: dashboardActivityViewModel.getGrid()) {
+        for (TableRow row: dashboardViewModel.getGrid()) {
             tableLayout.addView(row);
         }
     }
 
-    public void NavigateDashboard(View view) {
-        Intent intentActivityAddMushroom = new Intent(DashboardActivity.this,MainActivity.class);
-        startActivity(intentActivityAddMushroom);
-    }
-    public void NavigateGeneralInfo(View view) {
-        Intent intentActivityAddMushroom = new Intent(DashboardActivity.this,MainActivity.class);
-        startActivity(intentActivityAddMushroom);
-    }
-    public void NavigateSettings(View view) {
-        Intent intentActivityAddMushroom = new Intent(DashboardActivity.this,MainActivity.class);
-        startActivity(intentActivityAddMushroom);
-    }
-
 
     //On clicking + this brings a dialog with input
-    public void AddMushroom(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Mushroom Name");
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-        builder.setView(input);
-
-        builder.setPositiveButton("Add Mushroom", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dashboardActivityViewModel.addMushroom(new Mushroom(input.getText().toString()));
-                UpdateGrid();
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
+    public void AddMushroom(String mushroomName) {
+        dashboardViewModel.addMushroom(new Mushroom(mushroomName));
+        UpdateGrid();
     }
 
     public void RemoveMushroom(LinearLayout containerToRemove){
@@ -115,9 +81,13 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
-    public void clickHandlerCell(View view) {
-        view.getTag();
-        NavController nav = Navigation.findNavController(view);
-        nav.navigate(R.id.action_dashboard_to_viewSpecimen);
+    public void openAddMushroomDialog(View v){
+        AddMushroomDialogFragment dialogFragment = new AddMushroomDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(),"AddMushroomDialogFragment");
+    }
+
+    @Override
+    public void applyData(String mushroomName) {
+        AddMushroom(mushroomName);
     }
 }

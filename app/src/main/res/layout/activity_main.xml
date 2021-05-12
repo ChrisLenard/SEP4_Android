@@ -2,13 +2,35 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:translationZ="0dp"
-    tools:context=".Dashboard">
+    tools:context=".MainActivity">
 
-    <fragment
+    <FrameLayout
+        android:id="@+id/fragmentbox"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/bottomNavigationView"
+        android:background="#FFF0A8"
+        app:menu="@menu/bottom_navigation_bar">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    <!--<fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -16,5 +38,5 @@
         app:defaultNavHost="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav" />
+        app:navGraph="@navigation/nav" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,196 +2,63 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/fragment_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:translationZ="0dp"
+    android:tag="DASH"
     tools:context=".Dashboard">
 
     <ImageButton
-        android:id="@+id/buttonAddMushroom"
+        android:id="@+id/btnAddMushroom"
         android:layout_width="70dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="140dp"
         android:background="@android:drawable/ic_menu_add"
+        android:clickable="true"
         android:scaleType="fitXY"
         android:src="@android:drawable/ic_menu_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:clickable="true"
-        android:translationZ="5dp"
         android:tint="@color/black"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="#FFAE58"
+        android:translationZ="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationZ="3dp"
-        app:layout_constraintStart_toStartOf="parent">
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:translationZ="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/buttonInfo"
-                android:layout_width="96dp"
-                android:layout_height="84dp"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                android:scaleType="fitXY"
-                android:clickable="true"
-                android:translationZ="10dp"
-                android:tint="@color/white"
-                />
-
-            <TextView
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="114dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="0dp"
-                android:ems="10"
-                android:translationZ="4dp"
-                android:inputType="textPersonName"
-                android:text="General Info"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:textIsSelectable="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout6"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:orientation="vertical"
-            android:translationZ="3dp"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout4">
-
-            <ImageButton
-                android:id="@+id/buttonDashboard"
-                android:layout_width="96dp"
-                android:layout_height="84dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="0dp"
-                android:scaleType="fitXY"
-                android:clickable="true"
-                android:translationZ="10dp"
-                android:tint="@color/white"
-                />
-
-            <TextView
-                android:id="@+id/editTextTextPersonName2"
-                android:layout_width="113dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="0dp"
-                android:ems="10"
-                android:translationZ="4dp"
-                android:inputType="textPersonName"
-                android:text="Dashboard"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:textIsSelectable="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="150dp"
-            android:layout_height="140dp"
-            android:orientation="vertical"
-            android:translationZ="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/buttonSettings"
-                android:layout_width="96dp"
-                android:layout_height="84dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="0dp"
-                android:scaleType="fitXY"
-                android:translationZ="10dp"
-                android:tint="@color/white" />
-
-            <TextView
-                android:id="@+id/editTextTextPersonName3"
-                android:layout_width="113dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="6dp"
-                android:ems="10"
-                android:translationZ="4dp"
-                android:inputType="textPersonName"
-                android:text="Settings"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:textIsSelectable="false" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_width="389dp"
-        android:layout_height="544dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="20dp"
         android:fillViewport="true"
         android:translationZ="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
-            android:id="@+id/table"
+            android:id="@+id/dashboardTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:translationZ="2dp">
 
             <TableRow
-                android:id="@+id/dashboardRow1"
+                android:id="@+id/dashboardTableRow1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:translationZ="2dp"
                 android:visibility="gone">
 
                 <LinearLayout
-                    android:id="@+id/containerMushroom1"
+                    android:id="@+id/containerMushroom"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="visible">
 
                     <ImageButton
-                        android:id="@+id/imageButton8"
+                        android:id="@+id/mushroomButton"
                         android:layout_width="97dp"
                         android:layout_height="92dp"
                         android:layout_marginStart="16dp"
@@ -203,7 +70,7 @@
                         android:translationZ="3dp" />
 
                     <TextView
-                        android:id="@+id/editTextTextPersonName4"
+                        android:id="@+id/mushroomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
