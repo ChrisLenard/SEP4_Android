@@ -228,7 +228,6 @@ public class DashboardActivityViewModel extends ViewModel {
         newShroomText.setTranslationZ(3);
         newShroomText.setTextColor(Color.BLACK);
         newShroomText.setId(ViewCompat.generateViewId());
-        newShroomText.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
 
         //LinearLayout
         LinearLayout newShroomContainer = new LinearLayout(context);
