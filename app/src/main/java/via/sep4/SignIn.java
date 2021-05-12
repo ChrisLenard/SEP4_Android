@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -13,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import via.sep4.Model.Data.SensorDataList;
+import via.sep4.Model.Data.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +34,8 @@ public class SignIn extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private SignInViewModel signInViewModel;
 
     public SignIn() {
         // Required empty public constructor
@@ -57,6 +62,16 @@ public class SignIn extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        signInViewModel = new SignInViewModel();
+        final Observer<User> userObserver = new Observer<User>()
+        {
+            @Override
+            public void onChanged(@Nullable final User user)
+            {
+                //User Data binding
+            }
+        };
+        signInViewModel.getUser().observe(this, userObserver);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
