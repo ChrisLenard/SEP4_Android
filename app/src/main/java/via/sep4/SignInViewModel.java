@@ -3,6 +3,8 @@ package via.sep4;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.Objects;
+
 import via.sep4.Model.Data.User;
 import via.sep4.Model.PersistenceHandler;
 import via.sep4.Model.WebHandler;
@@ -24,6 +26,6 @@ public class SignInViewModel extends ViewModel
 
     public void SignIn()
     {
-        webHandler.token(user.getValue());
+        webHandler.token(Objects.requireNonNull(user.getValue()));
     }
 }

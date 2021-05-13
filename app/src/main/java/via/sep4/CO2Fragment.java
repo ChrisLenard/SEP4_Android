@@ -1,22 +1,24 @@
 package via.sep4;
 
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Diary#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Diary extends Fragment {
+public class CO2Fragment extends Fragment {
+
+    private CO2ViewModel mViewModel;
 
     // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -24,7 +26,7 @@ public class Diary extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Diary() {
+    public CO2Fragment() {
         // Required empty public constructor
     }
 
@@ -36,9 +38,9 @@ public class Diary extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment Diary.
      */
-// TODO: Rename and change types and number of parameters
-    public static Diary newInstance(String param1, String param2) {
-        Diary fragment = new Diary();
+    // TODO: Rename and change types and number of parameters
+    public static CO2Fragment newInstance(String param1, String param2) {
+        CO2Fragment fragment = new CO2Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -49,6 +51,7 @@ public class Diary extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mViewModel = new CO2ViewModel();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,6 +62,6 @@ public class Diary extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diary, container, false);
+        return inflater.inflate(R.layout.co2_fragment, container, false);
     }
 }
