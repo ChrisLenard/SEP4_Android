@@ -18,7 +18,11 @@
         android:id="@+id/viewSpecimen"
         android:name="via.sep4.ViewSpecimen"
         android:label="fragment_view_specimen"
-        tools:layout="@layout/fragment_view_specimen" />
+        tools:layout="@layout/fragment_view_specimen" >
+        <action
+            android:id="@+id/action_viewSpecimen_to_diary4"
+            app:destination="@id/diary4" />
+    </fragment>
     <fragment
         android:id="@+id/signIn"
         android:name="via.sep4.SignIn"
@@ -28,4 +32,9 @@
             android:id="@+id/action_signIn_to_dashboard"
             app:destination="@id/dashboard" />
     </fragment>
+    <fragment
+        android:id="@+id/diary4"
+        android:name="via.sep4.Diary"
+        android:label="fragment_diary"
+        tools:layout="@layout/fragment_diary" />
 </navigation>
