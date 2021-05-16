@@ -6,29 +6,30 @@ import androidx.lifecycle.ViewModel;
 import via.sep4.Model.PersistenceHandler;
 import via.sep4.Model.WebHandler;
 
-public class CO2ViewModel extends ViewModel {
-    private MutableLiveData<Float> currentCO2LiveData;
+public class LightViewModel extends ViewModel {
+
+    private MutableLiveData<Float> currentLightLiveData;
     private PersistenceHandler persistenceHandler;
     private WebHandler webHandler;
-    private int specimenKey; //TODO: specimenkey and hardwareID passing
+    private int specimenKey;
     private int hardwareID;
 
-    public CO2ViewModel() {
+    public LightViewModel() {
         persistenceHandler = new PersistenceHandler();
         webHandler = new WebHandler();
         float f = 0;
-        currentCO2LiveData = new MutableLiveData<>();
-        currentCO2LiveData.setValue(f);
+        currentLightLiveData = new MutableLiveData<>();
+        currentLightLiveData.setValue(f);
     }
 
     public MutableLiveData<Float> getCurrentLightLiveData()
     {
-        return currentCO2LiveData;
+        return currentLightLiveData;
     }
 
     public void update()
     {
-        String src = "co2";
-        currentCO2LiveData.setValue(webHandler.getCurrentSensorData(hardwareID, src));
+        String src = "light";
+        currentLightLiveData.setValue(webHandler.getCurrentSensorData(hardwareID, src));
     }
 }

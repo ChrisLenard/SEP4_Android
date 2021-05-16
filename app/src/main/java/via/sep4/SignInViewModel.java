@@ -18,14 +18,17 @@ public class SignInViewModel extends ViewModel
     public SignInViewModel() {
         persistenceHandler = new PersistenceHandler();
         webHandler = new WebHandler();
+        User userInLiveData = new User();
+        user.setValue(userInLiveData);
     }
 
     public MutableLiveData<User> getUser() {
         return user;
     }
 
-    public void SignIn()
+    //TODO: ensure that login only happens if connection successful
+    public boolean SignIn()
     {
-        webHandler.token(Objects.requireNonNull(user.getValue()));
+        return webHandler.token(user.getValue());
     }
 }

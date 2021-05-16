@@ -1,22 +1,16 @@
 package via.sep4;
 
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class CO2Fragment extends Fragment {
+import androidx.fragment.app.Fragment;
 
-    private CO2ViewModel mViewModel;
+public class LightFragment extends Fragment {
+
+    private LightViewModel mViewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +21,7 @@ public class CO2Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CO2Fragment() {
+    public LightFragment() {
         // Required empty public constructor
     }
 
@@ -40,8 +34,8 @@ public class CO2Fragment extends Fragment {
      * @return A new instance of fragment Diary.
      */
     // TODO: Rename and change types and number of parameters
-    public static CO2Fragment newInstance(String param1, String param2) {
-        CO2Fragment fragment = new CO2Fragment();
+    public static LightFragment newInstance(String param1, String param2) {
+        LightFragment fragment = new LightFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -52,7 +46,7 @@ public class CO2Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new CO2ViewModel();
+        mViewModel = new LightViewModel();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -63,9 +57,9 @@ public class CO2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.co2_fragment, container, false);
+        View view = inflater.inflate(R.layout.light_fragment, container, false);
         mViewModel.getCurrentLightLiveData().observe(getViewLifecycleOwner(), observed -> {
-            TextView currentText = view.findViewById(R.id.co2_current);
+            TextView currentText = view.findViewById(R.id.light_current);
             currentText.setText(observed.toString());
         });
         return view;

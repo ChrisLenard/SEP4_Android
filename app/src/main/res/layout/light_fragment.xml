@@ -13,10 +13,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/co2_title"
+            android:id="@+id/Light_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CO2 level"
+            android:text="Light level"
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -39,7 +39,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/co2_range_recommended"
+                    android:id="@+id/light_range_recommended"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Recommended range:"
@@ -50,10 +50,10 @@
                     android:layout_height="24dp" />
 
                 <TextView
-                    android:id="@+id/co2_range"
+                    android:id="@+id/light_range"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="800  - 1500 ppm"
+                    android:text="unknown"
                     android:textAlignment="center"
                     android:textSize="22sp" />
 
@@ -66,7 +66,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/co2_current_title"
+                    android:id="@+id/light_current_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -78,17 +78,17 @@
                     android:layout_height="24dp" />
 
                 <TextView
-                    android:id="@+id/co2_current"
+                    android:id="@+id/light_current"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1200 ppm"
+                    android:text="unknown"
                     android:textAlignment="center"
                     android:textSize="22sp" />
             </LinearLayout>
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/co2_visualizer"
+            android:id="@+id/light_visualizer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></ImageView>
 

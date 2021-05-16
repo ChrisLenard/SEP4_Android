@@ -87,8 +87,9 @@ public class WebClient {
         return miscAPI;
     }
 
-    public static void token(String auth)
+    public static boolean token(String auth)
     {
+        final boolean[] ret = {false};
         Call<String> tokenCall = getMiscAPI().getToken(auth);
         tokenCall.enqueue(new Callback<String>() {
             @Override
@@ -100,6 +101,7 @@ public class WebClient {
                 userAPI = createService(UserAPI.class, tempJWT);
                 hardwareAPI = createService(HardwareAPI.class, tempJWT);
                 statusAPI = createService(StatusAPI.class, tempJWT);
+                ret[0] = true;
             }
 
             @Override
@@ -107,5 +109,6 @@ public class WebClient {
 
             }
         });
+        return ret[0];
     }
 }
