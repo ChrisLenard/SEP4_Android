@@ -1,6 +1,5 @@
 package via.sep4.Model;
 
-
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -10,6 +9,7 @@ import via.sep4.Model.Data.SensorData;
 import via.sep4.Model.Data.Specimen;
 import via.sep4.Model.Data.User;
 import via.sep4.Persistence.WebClient;
+
 
 public class WebHandler {
     /**

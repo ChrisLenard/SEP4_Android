@@ -2,19 +2,13 @@ package via.sep4;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import via.sep4.Model.Mushroom;
-
-import androidx.lifecycle.Observer;
-
-import via.sep4.Model.Data.SensorDataList;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,25 +16,20 @@ import via.sep4.Model.Data.SensorDataList;
  * create an instance of this fragment.
  */
 public class ViewSpecimen extends Fragment {
+    
+    Button diaryButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private ViewSpecimenViewModel viewModel;
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Mushroom mushroom;
-    private View v;
+
     public ViewSpecimen() {
         // Required empty public constructor
-    }
-
-    public ViewSpecimen(Mushroom mushroom){
-        this.mushroom = mushroom;
     }
 
     /**
@@ -64,16 +53,6 @@ public class ViewSpecimen extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ViewSpecimenViewModel();
-        final Observer<SensorDataList> sensorDataObserver = new Observer<SensorDataList>()
-        {
-            @Override
-            public void onChanged(@Nullable final SensorDataList sensorDataList)
-            {
-                //Sensor Data binding
-            }
-        };
-        viewModel.getSensorLiveData().observe(this, sensorDataObserver);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -84,10 +63,19 @@ public class ViewSpecimen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_view_specimen, container, false);
+        Mushroom mushroom = (Mushroom) getArguments().getSerializable("mushroom");
 
-        TextView mushroomName = v.findViewById(R.id.MushroomName);
-        mushroomName.setText(mushroom.getName());
-        return v;
+        View root = inflater.inflate(R.layout.fragment_view_specimen, container, false);
+        diaryButton = root.findViewById(R.id.diaryButton);
+        diaryButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                NavController nav = new NavController(getContext());
+                nav.navigate(R.id.action_viewSpecimen_to_diary4);
+            }
+        });
+        return root;
     }
 }

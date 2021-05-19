@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -26,9 +25,7 @@ import androidx.navigation.Navigation;
 import java.util.ArrayList;
 import java.util.List;
 
-import via.sep4.Model.Mushroom;
-
-public class DashboardViewModel extends ViewModel {
+public class DashboardActivityViewModel extends ViewModel {
     //List containing all mushrooms
     private MutableLiveData<List<Mushroom>> mList;
     //List containing all generated rows
@@ -214,9 +211,12 @@ public class DashboardViewModel extends ViewModel {
         newShroomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox,new ViewSpecimen(mushroom)).commit();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("mushroom",mushroom);
+                nav.navigate(R.id.action_dashboard_to_viewSpecimen,bundle);
             }
         });
+
 
         //TextView for new shroom
         TextView newShroomText = new TextView(context);
