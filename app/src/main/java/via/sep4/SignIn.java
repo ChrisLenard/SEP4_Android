@@ -54,6 +54,16 @@ public class SignIn extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        signInViewModel = new SignInViewModel();
+        final Observer<User> userObserver = new Observer<User>()
+        {
+            @Override
+            public void onChanged(@Nullable final User user)
+            {
+                //User Data binding
+            }
+        };
+        //signInViewModel.getUser().observe(this, userObserver);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);

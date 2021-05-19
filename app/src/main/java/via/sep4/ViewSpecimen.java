@@ -2,6 +2,9 @@ package via.sep4;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 
@@ -9,6 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import android.widget.TextView;
+import via.sep4.Model.Mushroom;
+import androidx.lifecycle.Observer;
+import via.sep4.Model.Data.SensorDataList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,17 +73,33 @@ public class ViewSpecimen extends Fragment {
         // Inflate the layout for this fragment
         Mushroom mushroom = (Mushroom) getArguments().getSerializable("mushroom");
 
-        View root = inflater.inflate(R.layout.fragment_view_specimen, container, false);
-        diaryButton = root.findViewById(R.id.diaryButton);
+        View v = inflater.inflate(R.layout.fragment_view_specimen, container, false);
+        diaryButton = v.findViewById(R.id.diaryButton);
         diaryButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
+            public void onClick(View v2)
             {
                 NavController nav = new NavController(getContext());
                 nav.navigate(R.id.action_viewSpecimen_to_diary4);
             }
         });
-        return root;
+        TextView mushroomName = v.findViewById(R.id.MushroomName);
+        mushroomName.setText(mushroom.getName());
+        CardView cardView1 = v.findViewById(R.id.temperature);
+        CardView cardView2 = v.findViewById(R.id.humidity);
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v3) {
+                ((AppCompatActivity) v3.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox,new TemperatureFragment()).commit();
+            }
+        });
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v4) {
+                ((AppCompatActivity) v4.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox,new HumidityFragment()).commit();
+            }
+        });
+        return v;
     }
 }
