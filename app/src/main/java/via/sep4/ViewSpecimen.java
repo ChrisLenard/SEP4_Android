@@ -3,11 +3,14 @@ package via.sep4;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import via.sep4.Model.Mushroom;
@@ -88,6 +91,20 @@ public class ViewSpecimen extends Fragment {
 
         TextView mushroomName = v.findViewById(R.id.MushroomName);
         mushroomName.setText(mushroom.getName());
+        CardView cardView1 = v.findViewById(R.id.temperature);
+        CardView cardView2 = v.findViewById(R.id.humidity);
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox,new TemperatureFragment()).commit();
+            }
+        });
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox,new HumidityFragment()).commit();
+            }
+        });
         return v;
     }
 }

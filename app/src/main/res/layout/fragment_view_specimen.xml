@@ -35,25 +35,25 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/button_viewspecimen_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_viewspecimen_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/button_viewspecimen_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button_viewspecimen_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
