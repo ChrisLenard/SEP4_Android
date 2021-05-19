@@ -47,7 +47,7 @@ public class ViewSpecimenViewModel extends ViewModel
 
     }
 
-    public Specimen getSensorData()
+    public Specimen getSpecimen()
     {
         //TODO: write internet checker
         return webHandler.getSpecimen(specimenKey);

@@ -35,25 +35,19 @@ public class MainActivity extends AppCompatActivity implements AddMushroomDialog
     }
 
     //Bottom Navigation Bar Listener
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
-            switch(item.getItemId()){
-                case R.id.item_home:
-                    selectedFragment = new InfoFragment();
-                    break;
-                case R.id.item_dashboard:
-                    selectedFragment = new Dashboard();
-                    break;
-                case R.id.item_settings:
-                    selectedFragment = new SettingsFragment();
-                    break;
-            }
-            //Begin Transaction
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentbox,selectedFragment).commit();
-            return true;
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationListener = item -> {
+        Fragment selectedFragment = null;
+        int itemId = item.getItemId();
+        if (itemId == R.id.item_home) {
+            selectedFragment = new InfoFragment();
+        } else if (itemId == R.id.item_dashboard) {
+            selectedFragment = new Dashboard();
+        } else if (itemId == R.id.item_settings) {
+            selectedFragment = new SettingsFragment();
         }
+        //Begin Transaction
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentbox,selectedFragment).commit();
+        return true;
     };
 }

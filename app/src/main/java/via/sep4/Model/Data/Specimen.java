@@ -10,6 +10,7 @@ public class Specimen {
     private float desired_air_humidity;
     private float desired_air_co2;
     private int hardware_id;
+    private SensorData currentData;
 
     public int getSpecimen_key() {
         return specimen_key;
@@ -81,5 +82,13 @@ public class Specimen {
 
     public void setHardware_id(int hardware_id) {
         this.hardware_id = hardware_id;
+    }
+
+    public SensorData getCurrentData() {
+        return currentData;
+    }
+
+    public void setCurrentData(SensorData currentData) {
+        this.currentData = currentData;
     }
 }

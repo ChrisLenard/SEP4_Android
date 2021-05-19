@@ -89,14 +89,13 @@ public class SignIn extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button button = view.findViewById(R.id.buttonSignIn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button.setOnClickListener((View.OnClickListener) v -> {
+            boolean success = signInViewModel.SignIn();
+            if (success) {
                 BottomNavigationView bottomNavigationView = (BottomNavigationView)
                         view.getRootView().findViewById(R.id.bottomNavigationView);
                 bottomNavigationView.setVisibility(View.VISIBLE); //Turns on Navigation view
-                getParentFragmentManager().beginTransaction().replace(R.id.fragmentbox,new InfoFragment()).commit(); // Transacts to InfoFragment
-
+                getParentFragmentManager().beginTransaction().replace(R.id.fragmentbox, new InfoFragment()).commit(); // Transacts to InfoFragment
             }
         });
     }

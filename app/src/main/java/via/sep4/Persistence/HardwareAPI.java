@@ -13,6 +13,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import via.sep4.Model.Data.Hardware;
+import via.sep4.Model.Data.SensorData;
 
 public interface HardwareAPI {
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
@@ -37,5 +38,5 @@ public interface HardwareAPI {
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("hardware/id/{hardware_id}/sensor")
-    Call<Hardware> getHardwareSensorData(@Path("hardware_id") int hardware_id);
+    Call<SensorData> getHardwareSensorData(@Path("hardware_id") int hardware_id);
 }
