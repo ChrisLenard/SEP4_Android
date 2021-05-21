@@ -53,7 +53,6 @@
                 android:text="Button" />
 
             <Button
-                <!--android:id="@+id/diaryButton"-->
                 android:id="@+id/button_viewspecimen_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,16 +1,31 @@
 package via.sep4;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class MainActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Bottom Navigation Bar
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationListener);
+        bottomNavigationView.setVisibility(View.INVISIBLE); //To not see navigation bar on Sign In menu
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentbox, new SignIn()).commit();
     }
 
     @Override
@@ -33,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //Begin Transaction
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentbox,selectedFragment).commit();
+                .replace(R.id.fragmentbox, selectedFragment).commit();
         return true;
     };
 }

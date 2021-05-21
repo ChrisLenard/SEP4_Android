@@ -1,4 +1,4 @@
-package via.sep4;
+package via.sep4.Model;
 
 import android.widget.LinearLayout;
 import android.widget.TableRow;

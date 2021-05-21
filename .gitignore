@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/.idea
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -16,3 +17,4 @@ local.properties
 /.idea/.gitignore
 /app/.gitignore
 /docs/SEP4AndroidPrelimArchitecture.asta.lock
+/.gradle
