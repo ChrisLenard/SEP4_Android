@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- {@deprecated Use fragment_dashboard.xml instead.} -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +20,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:clickable="true"
-        android:onClick="AddMushroom"
         android:translationZ="5dp"
         android:tint="@color/black"
         app:srcCompat="@android:drawable/ic_menu_add" />
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:translationZ="2dp"
             android:clickable="true"
-            android:onClick="clickHandlerCell">
+            >
 
             <TableRow
                 android:id="@+id/dashboardTableRow1"

@@ -29,9 +29,12 @@ import via.sep4.Model.Mushroom;
 
 public class DashboardActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
 
+    //Old navigation bar - deprecated
     ImageButton buttonInfo;
     ImageButton buttonDashboard;
     ImageButton buttonSettings;
+
+
     ImageButton buttonAddMushroom;
     TableLayout tableLayout;
     TableRow row1;
@@ -40,7 +43,6 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
     ArrayList<Integer> tableRowIds = new ArrayList();
 
     DashboardViewModel dashboardViewModel;
-    DashboardActivityViewModel dashboardActivityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,31 +64,14 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
                 openAddMushroomDialog(v);
             }
         });
-
-        setContentView(R.layout.dashboard);
-        buttonInfo = (ImageButton) findViewById(R.id.buttonInfo);
-        buttonDashboard = (ImageButton) findViewById(R.id.buttonDashboard);
-        buttonSettings = (ImageButton) findViewById(R.id.buttonSettings);
-        buttonAddMushroom = (ImageButton) findViewById(R.id.buttonAddMushroom);
-        row1 = (TableRow) findViewById(R.id.dashboardRow1);
-        tableLayout = (TableLayout) findViewById(R.id.table);
-
-        dashboardActivityViewModel = new ViewModelProvider(this).get(DashboardActivityViewModel.class);
-        dashboardActivityViewModel.setData(this, row1, (ImageButton) findViewById(R.id.imageButton8), getDrawable(R.drawable.shroom), (TextView) findViewById(R.id.editTextTextPersonName4), (LinearLayout) findViewById(R.id.containerMushroom1));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Latticed Stinkhorn"));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Treehugger"));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Puffball"));
-        dashboardActivityViewModel.addMushroom(new Mushroom("Indigo Milkcap"));
         //dashboardActivityViewModel.reSetUpGrid() //Only for testing;
         UpdateGrid();
     }
 
     public void UpdateGrid() {
         tableLayout.removeAllViews();
-        for (TableRow row : dashboardViewModel.getGrid()) {
-            for (TableRow row : dashboardActivityViewModel.getGrid()) {
-                tableLayout.addView(row);
-            }
+        for (TableRow row: dashboardViewModel.getGrid()) {
+            tableLayout.addView(row);
         }
     }
 
@@ -123,7 +108,7 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
         builder.setPositiveButton("Add Mushroom", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dashboardActivityViewModel.addMushroom(new Mushroom(input.getText().toString()));
+                dashboardViewModel.addMushroom(new Mushroom(input.getText().toString()));
                 UpdateGrid();
             }
         });
@@ -155,10 +140,5 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
     @Override
     public void applyData(String mushroomName) {
         AddMushroom(mushroomName);
-        public void clickHandlerCell (View view){
-            view.getTag();
-            NavController nav = Navigation.findNavController(view);
-            nav.navigate(R.id.action_dashboard_to_viewSpecimen);
-        }
     }
 }
