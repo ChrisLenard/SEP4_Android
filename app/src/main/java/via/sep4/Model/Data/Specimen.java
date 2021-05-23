@@ -1,8 +1,20 @@
 package via.sep4.Model.Data;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {@ForeignKey(entity = Hardware.class,
+        parentColumns = "hardware_key",
+        childColumns = "hardware_id"
+)})
 public class Specimen {
+
+    @PrimaryKey
     private int specimen_key;
-    private double planted_date; // This is double due to int max size - Swagger provides higher value than max int can hold
+
+    private long planted_date; // long used to due Unix time
     private String specimen_name;
     private String specimen_type;
     private String specimen_description;
@@ -10,6 +22,8 @@ public class Specimen {
     private float desired_air_humidity;
     private float desired_air_co2;
     private int hardware_id;
+
+    @Ignore
     private SensorData currentData;
 
     public int getSpecimen_key() {
@@ -20,11 +34,11 @@ public class Specimen {
         this.specimen_key = specimen_key;
     }
 
-    public double getPlanted_date() {
+    public long getPlanted_date() {
         return planted_date;
     }
 
-    public void setPlanted_date(double planted_date) {
+    public void setPlanted_date(long planted_date) {
         this.planted_date = planted_date;
     }
 

@@ -6,6 +6,7 @@ public class User {
      * @author Kristóf Lénárd
      * @version 1.0
      * This class is responsible for storing Users. It does not store passwords to ensure higher secrecy.
+     * NOTE: does not use Room. All local storage uses AppData and by extenstion, SharedPreferences.
      */
     private int user_key;
     private String username;

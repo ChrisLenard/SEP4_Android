@@ -2,7 +2,6 @@ package via.sep4.Model.Data;
 
 import java.util.ArrayList;
 
-//unknown - use singleton? would need to look into better alternatives
 public class SensorDataList
 {
     /**
@@ -17,7 +16,7 @@ public class SensorDataList
     public SensorDataList(int specimenKey)
     {
         this.specimenKey = specimenKey;
-        sensorData = new ArrayList<SensorData>();
+        sensorData = new ArrayList<>();
         //when needed, write retrieval methods - from webservice or local persistence
     }
 
@@ -29,5 +28,10 @@ public class SensorDataList
     public void addToList(SensorData s)
     {
         sensorData.add(s);
+    }
+
+    public int getSpecimenKey()
+    {
+        return specimenKey;
     }
 }

@@ -12,6 +12,8 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import via.sep4.Persistence.LocalPersistence;
+
 public class MainActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
     private BottomNavigationView bottomNavigationView;
 

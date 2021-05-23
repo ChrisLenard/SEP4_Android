@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import via.sep4.Model.Data.SensorDataList;
 import via.sep4.Model.Data.User;
+import via.sep4.Persistence.LocalPersistence;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,11 +90,11 @@ public class SignIn extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button button = view.findViewById(R.id.buttonSignIn);
-        button.setOnClickListener((View.OnClickListener) v -> {
+        button.setOnClickListener(v -> {
             boolean success = signInViewModel.SignIn();
             if (success) {
-                BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                        view.getRootView().findViewById(R.id.bottomNavigationView);
+                LocalPersistence.getDatabaseInstance(getActivity().getApplicationContext());
+                BottomNavigationView bottomNavigationView = view.getRootView().findViewById(R.id.bottomNavigationView);
                 bottomNavigationView.setVisibility(View.VISIBLE); //Turns on Navigation view
                 getParentFragmentManager().beginTransaction().replace(R.id.fragmentbox, new InfoFragment()).commit(); // Transacts to InfoFragment
             }

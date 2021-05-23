@@ -1,8 +1,19 @@
 package via.sep4.Model.Data;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {@ForeignKey(entity = Specimen.class,
+        parentColumns = "specimen_key",
+        childColumns = "specimen_key"
+)})
 public class Status {
+
+    @PrimaryKey
     private int entry_key;
-    private double entry_time; // This is double due to int max size - Swagger provides higher value than max int can hold
+
+    private long entry_time; // long due to Unix time
     private String stage_name;
     private int specimen_key;
 
@@ -14,11 +25,11 @@ public class Status {
         this.entry_key = entry_key;
     }
 
-    public double getEntry_time() {
+    public long getEntry_time() {
         return entry_time;
     }
 
-    public void setEntry_time(double entry_time) {
+    public void setEntry_time(long entry_time) {
         this.entry_time = entry_time;
     }
 
