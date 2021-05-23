@@ -23,6 +23,7 @@ public class LocalPersistence { //implements Room Library, provides database acc
     @Database(entities = {User.class}, version = 1)
     public abstract class AppDatabase extends RoomDatabase {
         public abstract PersistenceHandler.StatusDAO statusDAO();
+        public abstract PersistenceHandler.HardwareDAO hardwareDAO();
     }
 
     private LocalPersistence() {

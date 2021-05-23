@@ -5,10 +5,7 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {@ForeignKey(entity = Hardware.class,
-        parentColumns = "hardware_key",
-        childColumns = "hardware_id"
-)})
+@Entity
 public class Specimen {
 
     @PrimaryKey
@@ -18,6 +15,7 @@ public class Specimen {
     private String specimen_name;
     private String specimen_type;
     private String specimen_description;
+    //TODO: do we need hardware_id OR desired stuff? We already have all that in either hardware or SensorData
     private float desired_air_temperature;
     private float desired_air_humidity;
     private float desired_air_co2;

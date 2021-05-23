@@ -3,8 +3,11 @@ package via.sep4;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.anychart.core.stock.indicators.AO;
+
 import java.util.Objects;
 
+import via.sep4.Model.Data.AppData;
 import via.sep4.Model.Data.User;
 import via.sep4.Model.PersistenceHandler;
 import via.sep4.Model.WebHandler;
@@ -29,6 +32,15 @@ public class SignInViewModel extends ViewModel
     //TODO: ensure that login only happens if connection successful
     public boolean SignIn()
     {
-        return webHandler.token(user.getValue());
+        boolean b = webHandler.token(user.getValue());
+        AppData appData = AppData.getInstance();
+        if (!b) {
+            String[] arr = appData.retrieveSavedUser();
+            if(arr[0].equals("") || arr[1].equals("")) return false;
+        }
+        else {
+            appData.saveUser(user.getValue());
+        }
+        return true;
     }
 }
