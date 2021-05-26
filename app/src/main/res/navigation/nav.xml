@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_viewSpecimen_to_diary4"
             app:destination="@id/diary4" />
+        <action
+            android:id="@+id/action_viewSpecimen_to_dashboard"
+            app:destination="@id/dashboard" />
     </fragment>
     <fragment
         android:id="@+id/signIn"

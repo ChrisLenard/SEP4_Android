@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {@ForeignKey(entity = Specimen.class,
         parentColumns = "specimen_key",
-        childColumns = "specimen_key"
+        childColumns = "specimenKey"
 )})
 public class SensorData {
 

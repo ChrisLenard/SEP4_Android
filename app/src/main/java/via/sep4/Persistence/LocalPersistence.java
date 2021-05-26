@@ -8,6 +8,10 @@ import androidx.room.RoomDatabase;
 
 import java.time.LocalDateTime;
 
+import via.sep4.Model.Data.Hardware;
+import via.sep4.Model.Data.SensorData;
+import via.sep4.Model.Data.Specimen;
+import via.sep4.Model.Data.Status;
 import via.sep4.Model.Data.User;
 import via.sep4.Model.PersistenceHandler;
 
@@ -19,12 +23,6 @@ public class LocalPersistence { //implements Room Library, provides database acc
      */
 
     private static AppDatabase database;
-
-    @Database(entities = {User.class}, version = 1)
-    public abstract class AppDatabase extends RoomDatabase {
-        public abstract PersistenceHandler.StatusDAO statusDAO();
-        public abstract PersistenceHandler.HardwareDAO hardwareDAO();
-    }
 
     private LocalPersistence() {
 

@@ -16,10 +16,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,13 +43,16 @@ public class DashboardViewModel extends ViewModel {
     private LinearLayout shroomContainer;
 
     //Sets variables used to create Mushroom, generates Grid
-    public void setData(Context context, TableRow tableRow, ImageButton shroomButton, Drawable shroomButtonImage, TextView shroomText, LinearLayout shroomContainer) {
+    public void setData(Context context, TableRow tableRow, ImageButton shroomButton, Drawable shroomButtonImage, TextView shroomText, LinearLayout shroomContainer, LifecycleOwner owner) {
         this.context = context;
         this.tableRow = tableRow;
         this.shroomButton = shroomButton;
         this.shroomButtonImage = shroomButtonImage;
         this.shroomTextView = shroomText;
         this.shroomContainer = shroomContainer;
+        List<Mushroom> mushroomList = new ArrayList<>();
+        mList = new MutableLiveData<>();
+        mList.setValue(mushroomList);
         setUpGrid();
     }
 
@@ -194,7 +200,7 @@ public class DashboardViewModel extends ViewModel {
 
     //Used to create a container for mushroom
     private LinearLayout createNewMushroomContainer(Mushroom mushroom) {
-        NavController nav = new NavController(context); //Need view object here, not accessible in viewmodel :(
+        //NavController nav = new NavController(context); //Need view object here, not accessible in viewmodel :(
         String mushroomName = mushroom.getName();
         //ImageButton for new shroom
         ImageButton newShroomButton = new ImageButton(context);
@@ -209,9 +215,9 @@ public class DashboardViewModel extends ViewModel {
         newShroomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentbox, new ViewSpecimen(mushroom)).commit();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("mushroom", mushroom);
+                NavController nav = Navigation.findNavController(v);
                 nav.navigate(R.id.action_dashboard_to_viewSpecimen, bundle);
             }
         });
@@ -240,7 +246,7 @@ public class DashboardViewModel extends ViewModel {
     }
 
     //Returns a list of Mushrooms or generates a new one
-    private LiveData<List<Mushroom>> getMushroomList() {
+    public MutableLiveData<List<Mushroom>> getMushroomList() {
         if (mList == null) {
             mList = new MutableLiveData<>();
             loadMushroomList();

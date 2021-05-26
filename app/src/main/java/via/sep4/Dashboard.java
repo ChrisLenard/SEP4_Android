@@ -3,6 +3,7 @@ package via.sep4;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 import via.sep4.AddMushroomDialogFragment;
@@ -27,7 +29,7 @@ import via.sep4.Model.Mushroom;
  * Use the {@link Dashboard#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Dashboard extends Fragment implements AddMushroomDialogFragment.AddMushroomDialogListener {
+public class Dashboard extends Fragment {
 
     ImageButton buttonAddMushroom;
     TableLayout tableLayout;
@@ -84,11 +86,14 @@ public class Dashboard extends Fragment implements AddMushroomDialogFragment.Add
             buttonAddMushroom = (ImageButton)v.findViewById(R.id.btnAddMushroom);
 
             dashboardViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
-            dashboardViewModel.setData(getContext(),row1,(ImageButton)v.findViewById(R.id.mushroomButton),getActivity().getDrawable(R.drawable.shroom),(TextView)v.findViewById(R.id.mushroomText),(LinearLayout)v.findViewById(R.id.containerMushroom));
+            dashboardViewModel.setData(getContext(),row1,(ImageButton)v.findViewById(R.id.mushroomButton),getActivity().getDrawable(R.drawable.shroom),(TextView)v.findViewById(R.id.mushroomText),(LinearLayout)v.findViewById(R.id.containerMushroom), getViewLifecycleOwner());
             dashboardViewModel.addMushroom(new Mushroom("Latticed Stinkhorn"));
             dashboardViewModel.addMushroom(new Mushroom("Treehugger"));
             dashboardViewModel.addMushroom(new Mushroom("Puffball"));
             dashboardViewModel.addMushroom(new Mushroom("Indigo Milkcap"));
+
+            dashboardViewModel.getMushroomList().observe(getViewLifecycleOwner(), mushrooms -> AddMushroom(dashboardViewModel.getMushroomList().getValue().get(mushrooms.size() -1).getName()));
+
             buttonAddMushroom.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -123,7 +128,7 @@ public class Dashboard extends Fragment implements AddMushroomDialogFragment.Add
         }
         //Pops up AddMushroom Dialog
         public void openAddMushroomDialog(View v){
-            AddMushroomDialogFragment dialogFragment = new AddMushroomDialogFragment();
+            AddMushroomDialogFragment dialogFragment = new AddMushroomDialogFragment(this);
             dialogFragment.show(getParentFragmentManager(),"AddMushroomDialogFragment");
             Log.d("DASH","OPENED ADDMUSHROOMDIALOG");
         }
@@ -134,11 +139,5 @@ public class Dashboard extends Fragment implements AddMushroomDialogFragment.Add
             Log.d("DASH","Updating Grid");
             UpdateGrid();
 
-        }
-        @Override
-        public void applyData(String mushroomName) {
-            AddMushroom(mushroomName);
-            // Inflate the layout for this fragment
-            //return getLayoutInflater().inflate(R.layout.fragment_dashboard, container, false);
         }
     }

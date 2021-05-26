@@ -16,7 +16,7 @@ public interface MiscAPI
     @GET("defined/mushroom/types")
     Call<List<String>> getTypes();
 
-    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    //@Headers({ "Content-Type: text/plain;charset=UTF-8"})
     @GET("token")
     Call<String> getToken(@Header("Authorization") String auth);
 }

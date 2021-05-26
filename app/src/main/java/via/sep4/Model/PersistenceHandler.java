@@ -9,10 +9,12 @@ import java.util.List;
 
 import via.sep4.Model.Data.Hardware;
 import via.sep4.Model.Data.SensorData;
+import via.sep4.Model.Data.SensorDataList;
 import via.sep4.Model.Data.Specimen;
 import via.sep4.Model.Data.Status;
 
 public class PersistenceHandler {
+
     /**
      * @author Kristóf Lénárd
      * @version 1.0

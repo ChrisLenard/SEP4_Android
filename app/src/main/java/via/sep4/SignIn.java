@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import via.sep4.Model.Data.SensorDataList;
@@ -69,7 +71,7 @@ public class SignIn extends Fragment {
             @Override
             public void onChanged(@Nullable final User user)
             {
-                //User Data binding
+
             }
         };
         signInViewModel.getUser().observe(this, userObserver);
@@ -83,7 +85,8 @@ public class SignIn extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false);
+        View v =  inflater.inflate(R.layout.fragment_sign_in, container, false);
+        return v;
     }
 
     @Override
@@ -91,13 +94,20 @@ public class SignIn extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Button button = view.findViewById(R.id.buttonSignIn);
         button.setOnClickListener(v -> {
-            boolean success = signInViewModel.SignIn();
-            if (success) {
-                LocalPersistence.getDatabaseInstance(getActivity().getApplicationContext());
-                BottomNavigationView bottomNavigationView = view.getRootView().findViewById(R.id.bottomNavigationView);
-                bottomNavigationView.setVisibility(View.VISIBLE); //Turns on Navigation view
-                getParentFragmentManager().beginTransaction().replace(R.id.fragmentbox, new InfoFragment()).commit(); // Transacts to InfoFragment
-            }
+            signInViewModel.getUser().getValue().setUsername(((EditText) view.findViewById(R.id.editTextTextPersonName)).getText().toString());
+            signInViewModel.getUser().getValue().setPassword(((EditText) view.findViewById(R.id.editTextTextPersonName2)).getText().toString());
+            signInViewModel.SignIn();
+            final Observer<Boolean> observer = aBoolean -> {
+                if(aBoolean) {
+                    System.out.println("Observer");
+                    LocalPersistence.getDatabaseInstance(getActivity().getApplicationContext());
+                    BottomNavigationView bottomNavigationView = view.getRootView().findViewById(R.id.bottomNavigationView);
+                    bottomNavigationView.setVisibility(View.VISIBLE); //Turns on Navigation view
+                    NavController nav = Navigation.findNavController(view);
+                    nav.navigate(R.id.action_signIn_to_dashboard);
+                }
+            };
+            signInViewModel.getSuccess().observe(getViewLifecycleOwner(), observer);
         });
     }
 }

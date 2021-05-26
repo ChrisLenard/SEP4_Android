@@ -55,7 +55,8 @@ public class ViewSpecimenViewModel extends ViewModel
 
     public SensorDataList getLocalSensorData()
     {
-        return persistenceHandler.getAllSensorData(specimenKey);
+        return null;
+        //return persistenceHandler.getAllSensorData(specimenKey);
     }
 
 }

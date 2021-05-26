@@ -27,9 +27,9 @@ import via.sep4.Model.Mushroom;
  * @deprecated Superseded by Dashboard.
  */
 
-public class DashboardActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
+public class DashboardActivity extends AppCompatActivity {
 
-    //Old navigation bar - deprecated
+    /*//Old navigation bar - deprecated
     ImageButton buttonInfo;
     ImageButton buttonDashboard;
     ImageButton buttonSettings;
@@ -53,7 +53,7 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
         tableLayout = (TableLayout) findViewById(R.id.dashboardTable);
 
         dashboardViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
-        dashboardViewModel.setData(this, row1, (ImageButton) findViewById(R.id.mushroomButton), getDrawable(R.drawable.shroom), (TextView) findViewById(R.id.mushroomText), (LinearLayout) findViewById(R.id.containerMushroom));
+        dashboardViewModel.setData(getApplicationContext(), row1, (ImageButton) findViewById(R.id.mushroomButton), getDrawable(R.drawable.shroom), (TextView) findViewById(R.id.mushroomText), (LinearLayout) findViewById(R.id.containerMushroom));
         dashboardViewModel.addMushroom(new Mushroom("Latticed Stinkhorn"));
         dashboardViewModel.addMushroom(new Mushroom("Treehugger"));
         dashboardViewModel.addMushroom(new Mushroom("Puffball"));
@@ -135,10 +135,5 @@ public class DashboardActivity extends AppCompatActivity implements AddMushroomD
     public void openAddMushroomDialog(View v) {
         AddMushroomDialogFragment dialogFragment = new AddMushroomDialogFragment();
         dialogFragment.show(getSupportFragmentManager(), "AddMushroomDialogFragment");
-    }
-
-    @Override
-    public void applyData(String mushroomName) {
-        AddMushroom(mushroomName);
-    }
+    }*/
 }

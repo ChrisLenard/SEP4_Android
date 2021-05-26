@@ -13,10 +13,21 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.lifecycle.MutableLiveData;
+
+import java.util.List;
+
+import via.sep4.Model.Mushroom;
 
 public class AddMushroomDialogFragment extends AppCompatDialogFragment {
     private EditText editTextMushroomName;
     private AddMushroomDialogListener listener;
+    private Dashboard dashboard;
+
+    public AddMushroomDialogFragment(Dashboard dash)
+    {
+        dashboard = dash;
+    }
 
     @NonNull
     @Override
@@ -35,7 +46,7 @@ public class AddMushroomDialogFragment extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int i) {
                 //Gets Inputs and sends them to listener
                 String mushroomName = editTextMushroomName.getText().toString();
-                listener.applyData(mushroomName);
+                dashboard.AddMushroom(mushroomName);
             }
         });
         editTextMushroomName = v.findViewById(R.id.editTextMushroomName);
@@ -56,6 +67,6 @@ public class AddMushroomDialogFragment extends AppCompatDialogFragment {
 
     //The listener interface
     public interface AddMushroomDialogListener {
-        void applyData(String mushroomName);
+        //void applyData(String mushroomName, Dashboard dash);
     }
 }

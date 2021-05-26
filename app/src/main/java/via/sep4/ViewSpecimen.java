@@ -14,6 +14,7 @@ import android.widget.TextView;
 import via.sep4.Model.Mushroom;
 
 import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
 
 import via.sep4.Model.Data.SensorDataList;
 import android.widget.Button;
