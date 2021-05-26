@@ -1,14 +1,24 @@
 package via.sep4.Model.Data;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {@ForeignKey(entity = Specimen.class,
+        parentColumns = "specimen_key",
+        childColumns = "specimen_key"
+)})
 public class SensorData {
-    //todo
+
     /**
      * @author Kristóf Lénárd
      * @version 1.0
      * This class stores all saved sensor data at a given timestamp.
      */
 
+    @PrimaryKey
     private int key;
+
     private long time; //long needed due to unix time (stored in 64-bit format)
     private float current_air_temperature;
     private float current_air_humidity;

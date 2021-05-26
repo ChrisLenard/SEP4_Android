@@ -1,7 +1,18 @@
 package via.sep4.Model.Data;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {@ForeignKey(entity = Specimen.class,
+        parentColumns = "specimen_key",
+        childColumns = "specimen_key"
+)})
 public class Hardware {
+
+    @PrimaryKey
     private int hardware_key;
+
     private String hardware_id;
     private int specimen_key;
     private float desired_air_temperature;

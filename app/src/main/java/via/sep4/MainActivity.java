@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import via.sep4.Model.Data.AppData;
+import via.sep4.Persistence.LocalPersistence;
+
 public class MainActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
     private BottomNavigationView bottomNavigationView;
 
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements AddMushroomDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppData.setup(this);
 
         //Bottom Navigation Bar
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
