@@ -3,13 +3,13 @@ package via.sep4;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import via.sep4.Model.Mushroom;
 
@@ -27,6 +27,7 @@ import android.widget.Button;
 public class ViewSpecimen extends Fragment {
 
     Button diaryButton;
+    CardView temperature;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,12 +91,23 @@ public class ViewSpecimen extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_view_specimen, container, false);
         diaryButton = root.findViewById(R.id.diaryButton);
+        temperature = root.findViewById(R.id.temperature);
+        temperature.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                NavController nav = Navigation.findNavController(root);
+                nav.navigate(R.id.action_viewSpecimen_to_visualisation);
+            }
+        });
         diaryButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-
+                NavController nav = Navigation.findNavController(root);
+                nav.navigate(R.id.action_viewSpecimen_to_diary);
             }
         });
         return root;

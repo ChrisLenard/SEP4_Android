@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "via.sep4"
-        minSdkVersion 26
+        minSdkVersion 30
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"

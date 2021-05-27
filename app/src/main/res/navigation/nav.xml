@@ -20,11 +20,11 @@
         android:label="fragment_view_specimen"
         tools:layout="@layout/fragment_view_specimen" >
         <action
-            android:id="@+id/action_viewSpecimen_to_diary4"
-            app:destination="@id/diary4" />
+            android:id="@+id/action_viewSpecimen_to_diary"
+            app:destination="@id/diary" />
         <action
-            android:id="@+id/action_viewSpecimen_to_dashboard"
-            app:destination="@id/dashboard" />
+            android:id="@+id/action_viewSpecimen_to_visualisation"
+            app:destination="@id/visualisation" />
     </fragment>
     <fragment
         android:id="@+id/signIn"
@@ -36,8 +36,13 @@
             app:destination="@id/dashboard" />
     </fragment>
     <fragment
-        android:id="@+id/diary4"
+        android:id="@+id/diary"
         android:name="via.sep4.Diary"
         android:label="fragment_diary"
         tools:layout="@layout/fragment_diary" />
+    <fragment
+        android:id="@+id/visualisation"
+        android:name="via.sep4.visualisation"
+        android:label="fragment_visualisation"
+        tools:layout="@layout/fragment_visualisation" />
 </navigation>

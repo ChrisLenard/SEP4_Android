@@ -240,11 +240,3 @@ public class TemperatureFragment extends Fragment {
         anyChartView1.setChart(cartesian);
     }
 }
-
-class CustomDataEntry extends ValueDataEntry {
-
-    CustomDataEntry(String x, Number value) {
-        super(x, value);
-    }
-
-}

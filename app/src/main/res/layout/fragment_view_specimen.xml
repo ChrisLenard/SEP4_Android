@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ViewSpecimen">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,93 +33,110 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button_viewspecimen_1"
+                android:id="@+id/stageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button_viewspecimen_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button_viewspecimen_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Stage" />
 
             <Button
                 android:id="@+id/diaryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Diary" />
+
+            <Button
+                android:id="@+id/alarmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Alarm" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Delete" />
 
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/temperature"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_width="372dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            app:cardBackgroundColor="@android:color/holo_red_dark"
+            android:paddingBottom="10dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="3dp"
-            android:layout_margin="10dp">
+            app:cardElevation="3dp">
 
             <TextView
                 android:id="@+id/tempMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/rounded_green"
                 android:gravity="center_vertical"
-                android:text="test"
-                android:textSize="30sp" />
+                android:paddingLeft="15dp"
+                android:text="Temperature"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/actualTemp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/tempMain"
-                android:gravity="end|top"
-                android:text="actualTemp"
-                android:textSize="18sp" />
+                android:gravity="right|top"
+                android:paddingTop="20dp"
+                android:paddingEnd="80dp"
+                android:text="XX C"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/TempRange"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|end"
-                android:text="TemperatureRangeDifference"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
+                android:text="In recommended range"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
 
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="?android:attr/listDivider" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/humidity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="372dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:focusable="true">
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <TextView
                 android:id="@+id/humMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/rounded_blue"
                 android:gravity="center_vertical"
-                android:text="test"
+                android:paddingLeft="15dp"
+                android:text="Humidity"
                 android:textSize="30sp" />
 
             <TextView
@@ -139,31 +157,29 @@
                 android:textSize="18sp" />
         </androidx.cardview.widget.CardView>
 
-        <View
-            android:id="@+id/divider3"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="?android:attr/listDivider" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/dioxide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="372dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:focusable="true">
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <TextView
                 android:id="@+id/dioxideMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/rounded_red"
                 android:gravity="center_vertical"
-                android:text="test"
+                android:paddingLeft="15dp"
+                android:text="CO2 Level"
                 android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/actualCO2"
-                android:layout_width="match_parent"
+                android:layout_width="374dp"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/tempMain"
                 android:gravity="end|top"
@@ -179,26 +195,23 @@
                 android:textSize="18sp" />
         </androidx.cardview.widget.CardView>
 
-        <View
-            android:id="@+id/divider4"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="?android:attr/listDivider" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/light"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="372dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:focusable="true">
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <TextView
                 android:id="@+id/lightMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/rounded_gray"
                 android:gravity="center_vertical"
-                android:text="test"
+                android:paddingLeft="15dp"
+                android:text="Light Level"
                 android:textSize="30sp" />
 
             <TextView
@@ -220,13 +233,5 @@
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navbar"
-        android:layout_width="411dp"
-        android:layout_height="86dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
