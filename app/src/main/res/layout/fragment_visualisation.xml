@@ -21,7 +21,7 @@
         android:indeterminate="false"/>
 
     <TextView
-        android:id="@+id/layout_temperature_recommended"
+        android:id="@+id/range"
         android:layout_width="198dp"
         android:layout_height="96dp"
         android:layout_marginTop="4dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:editable="false"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/layout_temperature_text1"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"

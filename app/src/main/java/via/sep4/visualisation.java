@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -30,65 +31,35 @@ import com.anychart.scales.Linear;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link visualisation#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class visualisation extends Fragment
 {
-	
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-	private static final String ARG_PARAM1 = "param1";
-	private static final String ARG_PARAM2 = "param2";
-	
-	// TODO: Rename and change types of parameters
-	private String mParam1;
-	private String mParam2;
 	View v;
+	TextView name;
+	TextView range;
+	TextView type;
 	
 	public visualisation()
 	{
 		// Required empty public constructor
 	}
-	
-	/**
-	 * Use this factory method to create a new instance of
-	 * this fragment using the provided parameters.
-	 *
-	 * @param param1 Parameter 1.
-	 * @param param2 Parameter 2.
-	 * @return A new instance of fragment visualisation.
-	 */
-	// TODO: Rename and change types and number of parameters
-	public static visualisation newInstance(String param1, String param2)
-	{
-		visualisation fragment = new visualisation();
-		Bundle args = new Bundle();
-		args.putString(ARG_PARAM1, param1);
-		args.putString(ARG_PARAM2, param2);
-		fragment.setArguments(args);
-		return fragment;
-	}
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		if (getArguments() != null)
-		{
-			mParam1 = getArguments().getString(ARG_PARAM1);
-			mParam2 = getArguments().getString(ARG_PARAM2);
-		}
+		
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		v = inflater.inflate(R.layout.fragment_temperature, container, false);
-		
+		v = inflater.inflate(R.layout.fragment_visualisation, container, false);
+		name = v.findViewById(R.id.name);
+		range = v.findViewById(R.id.range);
+		type = v.findViewById(R.id.type);
+		name.setText(getArguments().getString("Name"));
+		range.setText(getArguments().getString("Range"));
+		type.setText(getArguments().getString("Type"));
 		setupCharts();
 		
 		return v;
@@ -96,93 +67,9 @@ public class visualisation extends Fragment
 	
 	private void setupCharts(){
 		
-		// FOR TOP ANYCHART
-		AnyChartView anyChartView = v.findViewById(R.id.anychart_temp_recommended);
-		anyChartView.setProgressBar(v.findViewById(R.id.prog_temp_recommended));
+		AnyChartView anyChartView1;
+		 anyChartView1 = v.findViewById(R.id.anychart_temp_graph);
 		
-		LinearGauge linearGauge = AnyChart.linear();
-		
-		// TODO data
-		linearGauge.data(new SingleValueDataSet(new Integer[] { 2 }));
-		
-		linearGauge.tooltip()
-				.useHtml(true)
-				.format(
-						"function () {\n" +
-								"          return this.value + '&deg;' + 'C' +\n" +
-								"            ' (' + (this.value * 1.8 + 32).toFixed(1) +\n" +
-								"            '&deg;' + 'F' + ')'\n" +
-								"    }");
-		
-		linearGauge.label(0).useHtml(true);
-		linearGauge.label(0)
-				.text("C&deg;")
-				.position(Position.LEFT_BOTTOM)
-				.anchor(Anchor.LEFT_BOTTOM)
-				.offsetY("20px")
-				.offsetX("38%")
-				.fontColor("black")
-				.fontSize(17);
-		
-		linearGauge.label(1)
-				.useHtml(true)
-				.text("F&deg;")
-				.position(Position.RIGHT_BOTTOM)
-				.anchor(Anchor.RIGHT_BOTTOM)
-				.offsetY("20px")
-				.offsetX("47.5%")
-				.fontColor("black")
-				.fontSize(17);
-		
-		Base scale = linearGauge.scale()
-				.minimum(-30)
-				.maximum(40);
-		//                .setTicks
-		
-		linearGauge.axis(0).scale(scale);
-		linearGauge.axis(0)
-				.offset("-1%")
-				.width("0.5%");
-		
-		linearGauge.axis(0).labels()
-				.format("{%Value}&deg;")
-				.useHtml(true);
-		
-		linearGauge.thermometer(0)
-				.name("Thermometer")
-				.id(1);
-		
-		linearGauge.axis(0).minorTicks(true);
-		linearGauge.axis(0).labels()
-				.format(
-						"function () {\n" +
-								"    return '<span style=\"color:black;\">' + this.value + '&deg;</span>'\n" +
-								"  }")
-				.useHtml(true);
-		
-		linearGauge.axis(1).minorTicks(true);
-		linearGauge.axis(1).labels()
-				.format(
-						"function () {\n" +
-								"    return '<span style=\"color:black;\">' + this.value + '&deg;</span>'\n" +
-								"  }")
-				.useHtml(true);
-		linearGauge.axis(1)
-				.offset("3.5%")
-				.orientation(Orientation.RIGHT);
-		
-		Linear linear = Linear.instantiate();
-		linear.minimum(-20)
-				.maximum(100);
-		//                .setTicks
-		linearGauge.axis(1).scale(linear);
-		
-		anyChartView.setChart(linearGauge);
-		
-		//FOR BOT CHART
-		
-		AnyChartView anyChartView1 = v.findViewById(R.id.anychart_temp_graph);
-		anyChartView1.setProgressBar(v.findViewById(R.id.prog_temp_chart));
 		
 		Cartesian cartesian = AnyChart.line();
 		

@@ -97,8 +97,13 @@ public class ViewSpecimen extends Fragment {
             @Override
             public void onClick(View v)
             {
+                mushroom = (Mushroom) getArguments().getSerializable("mushroom");
+                Bundle bundle = new Bundle();
+                bundle.putString("Type","Temperature");
+                bundle.putString("Range","12C - 19C");
+                bundle.putString("Name",mushroom.getName());
                 NavController nav = Navigation.findNavController(root);
-                nav.navigate(R.id.action_viewSpecimen_to_visualisation);
+                nav.navigate(R.id.action_viewSpecimen_to_visualisation,bundle);
             }
         });
         diaryButton.setOnClickListener(new View.OnClickListener()
