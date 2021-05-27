@@ -92,7 +92,7 @@ public class Dashboard extends Fragment {
             dashboardViewModel.addMushroom(new Mushroom("Puffball"));
             dashboardViewModel.addMushroom(new Mushroom("Indigo Milkcap"));
 
-            dashboardViewModel.getMushroomList().observe(getViewLifecycleOwner(), mushrooms -> AddMushroom(dashboardViewModel.getMushroomList().getValue().get(mushrooms.size() -1).getName()));
+            //dashboardViewModel.getMushroomList().observe(getViewLifecycleOwner(), mushrooms -> AddMushroom(dashboardViewModel.getMushroomList().getValue().get(mushrooms.size() -1).getName()));
 
             buttonAddMushroom.setOnClickListener(new View.OnClickListener() {
                 @Override
