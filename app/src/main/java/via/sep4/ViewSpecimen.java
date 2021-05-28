@@ -80,6 +80,7 @@ public class ViewSpecimen extends Fragment {
             }
         };
         viewModel.getSensorLiveData().observe(this, sensorDataObserver);
+        viewModel.getSensorData();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);

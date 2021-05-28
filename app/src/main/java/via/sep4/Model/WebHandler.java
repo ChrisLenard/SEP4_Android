@@ -1,11 +1,13 @@
 package via.sep4.Model;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import via.sep4.Model.Data.SensorData;
+import via.sep4.Model.Data.SensorDataList;
 import via.sep4.Model.Data.Specimen;
 import via.sep4.Model.Data.User;
 import via.sep4.Persistence.WebClient;
@@ -60,6 +62,40 @@ public class WebHandler {
 
             }
         });
+        return ret[0];
+    }
+    
+    public SensorDataList getSensorDataList(int key)
+    {
+        final SensorDataList[] ret = new SensorDataList[1];
+        if(WebClient.date_from == 0)
+            WebClient.date_from = System.currentTimeMillis()-3600000; //from 1 hour ago
+        else
+        {
+            if(WebClient.date_to != 0)
+            {
+                WebClient.date_from = WebClient.date_to;
+            }
+        }
+        WebClient.date_to = System.currentTimeMillis();
+        Call<SensorDataList> call = WebClient.getSpecimenAPI().getSpecimenSensor(key,WebClient.date_from,WebClient.date_to);
+        synchronized(this)
+        {
+            call.enqueue(new Callback<SensorDataList>()
+            {
+                @Override
+                public void onResponse(Call<SensorDataList> call, Response<SensorDataList> response)
+                {
+                    ret[0] = response.body();
+                }
+        
+                @Override
+                public void onFailure(Call<SensorDataList> call, Throwable t)
+                {
+            
+                }
+            });
+        }
         return ret[0];
     }
 }

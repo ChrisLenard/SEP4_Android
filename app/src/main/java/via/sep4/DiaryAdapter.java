@@ -31,7 +31,8 @@ public DiaryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int
 
 @Override
 public void onBindViewHolder(@NonNull DiaryAdapter.ViewHolder holder, int position) {
-	//TODO
+	holder.word.setText(mEntries.get(position).getEntry());
+	holder.diaryDate.setText(mEntries.get(position).getDateAdded().toString());
 }
 
 @Override
@@ -41,9 +42,12 @@ public int getItemCount() {
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 	
-	
+	TextView word;
+	TextView diaryDate;
 	public ViewHolder(@NonNull View itemView) {
 		super(itemView);
+		word = itemView.findViewById(R.id.word);
+		diaryDate = itemView.findViewById(R.id.diaryDate);
 		itemView.setOnClickListener(this);
 	}
 	

@@ -42,6 +42,7 @@ import java.util.List;
  * Use the {@link TemperatureFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+@Deprecated
 public class TemperatureFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

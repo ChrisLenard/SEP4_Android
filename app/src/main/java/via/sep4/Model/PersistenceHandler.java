@@ -1,5 +1,6 @@
 package via.sep4.Model;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -7,6 +8,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import via.sep4.DiaryEntry;
 import via.sep4.Model.Data.Hardware;
 import via.sep4.Model.Data.SensorData;
 import via.sep4.Model.Data.SensorDataList;
@@ -59,5 +61,20 @@ public class PersistenceHandler {
 
         @Delete
         void delete(Specimen specimen);
+    }
+    
+    @Dao
+    public interface DiaryEntryDAO {
+        @Query("SELECT * FROM diary_table WHERE id = (:id)")
+        DiaryEntry getDiaryEntry(int id);
+    
+        @Query("SELECT * FROM diary_table")
+        LiveData<List<DiaryEntry>> getAllEntries();
+        
+        @Insert
+        void insert(DiaryEntry diaryEntry);
+        
+        @Delete
+        void delete(DiaryEntry diaryEntry);
     }
 }

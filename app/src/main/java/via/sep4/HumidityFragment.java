@@ -1,5 +1,4 @@
 package via.sep4;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -28,6 +27,7 @@ import java.util.List;
  * Use the {@link HumidityFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+@Deprecated
 public class HumidityFragment extends Fragment {
     View v;
     // TODO: Rename parameter arguments, choose names that match

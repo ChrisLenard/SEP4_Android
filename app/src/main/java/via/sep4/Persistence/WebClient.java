@@ -24,6 +24,9 @@ public class WebClient {
      * This class is responsible for implementing the Retrofit library, enabling connections to the webservice.
      */
 
+    public static long date_from;
+    public static long date_to;
+    
     //URL for connection
     private static final String BASE_URL = "https://mushroompp.nlevi.dev";
 

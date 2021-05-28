@@ -39,10 +39,19 @@
         android:id="@+id/diary"
         android:name="via.sep4.Diary"
         android:label="fragment_diary"
-        tools:layout="@layout/fragment_diary" />
+        tools:layout="@layout/fragment_diary" >
+        <action
+            android:id="@+id/action_diary_to_addDiaryEntry"
+            app:destination="@id/addDiaryEntry" />
+    </fragment>
     <fragment
         android:id="@+id/visualisation"
         android:name="via.sep4.visualisation"
         android:label="fragment_visualisation"
         tools:layout="@layout/fragment_visualisation" />
+    <fragment
+        android:id="@+id/addDiaryEntry"
+        android:name="via.sep4.addDiaryEntry"
+        android:label="fragment_add_diary_entry"
+        tools:layout="@layout/fragment_add_diary_entry" />
 </navigation>

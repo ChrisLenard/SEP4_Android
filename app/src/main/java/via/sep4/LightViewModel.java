@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import via.sep4.Model.PersistenceHandler;
 import via.sep4.Model.WebHandler;
-
+@Deprecated
 public class LightViewModel extends ViewModel {
 
     private MutableLiveData<Float> currentLightLiveData;

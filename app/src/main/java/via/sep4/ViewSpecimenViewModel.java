@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.net.InetAddress;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import via.sep4.Model.Data.SensorDataList;
 import via.sep4.Model.Data.Specimen;
@@ -19,6 +21,7 @@ public class ViewSpecimenViewModel extends ViewModel
      */
 
     private PersistenceHandler persistenceHandler;
+    private final ExecutorService service;
     private WebHandler webHandler;
     private int specimenKey;
     private MutableLiveData<SensorDataList> sensorLiveData;
@@ -28,6 +31,7 @@ public class ViewSpecimenViewModel extends ViewModel
     {
         persistenceHandler = new PersistenceHandler();
         webHandler = new WebHandler();
+        service = Executors.newFixedThreadPool(2);
         sensorLiveData = new MutableLiveData<>();
         specimenKey = 0;
         //TODO: write specimen key retriever
@@ -57,6 +61,21 @@ public class ViewSpecimenViewModel extends ViewModel
     {
         return null;
         //return persistenceHandler.getAllSensorData(specimenKey);
+    }
+    
+    public void getSensorData() {
+        service.execute(() -> {
+            
+            sensorLiveData.postValue(webHandler.getSensorDataList(specimenKey));
+            try
+            {
+                Thread.sleep(300000);
+            } catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        });
+        
     }
 
 }

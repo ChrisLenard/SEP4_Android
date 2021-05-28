@@ -1,16 +1,22 @@
 package via.sep4;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class DiaryEntry
+@Entity(tableName = "diary_table")
+public class DiaryEntry implements Serializable
 {
+	@PrimaryKey(autoGenerate = true)
 	private int id;
+	
 	private String entry;
 	private Date dateAdded;
 
-public DiaryEntry(int id, String entry, Date dateAdded)
+public DiaryEntry(String entry, Date dateAdded)
 {
-	this.id = id;
 	this.entry = entry;
 	this.dateAdded = dateAdded;
 }

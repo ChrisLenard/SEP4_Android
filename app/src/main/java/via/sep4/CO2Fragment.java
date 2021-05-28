@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+@Deprecated
 public class CO2Fragment extends Fragment {
 
     private CO2ViewModel mViewModel;
