@@ -137,7 +137,8 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:text="Humidity"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/actualHum"
@@ -145,15 +146,21 @@
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/tempMain"
                 android:gravity="end|top"
-                android:text="actualHum"
-                android:textSize="18sp" />
+                android:paddingTop="20dp"
+                android:paddingEnd="80dp"
+                android:text="currenthum"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"  />
 
             <TextView
                 android:id="@+id/humRange"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="match_parent"
                 android:gravity="bottom|end"
-                android:text="HumidityRangeDifference"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
+                android:text="In recommended range"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </androidx.cardview.widget.CardView>
 
@@ -175,7 +182,8 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:text="CO2 Level"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/actualCO2"
@@ -183,15 +191,21 @@
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/tempMain"
                 android:gravity="end|top"
-                android:text="actualCO2"
-                android:textSize="18sp" />
+                android:paddingTop="20dp"
+                android:paddingEnd="80dp"
+                android:text="current co2"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"  />
 
             <TextView
                 android:id="@+id/co2Range"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="match_parent"
                 android:gravity="bottom|end"
-                android:text="CO2RangeDifference"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
+                android:text="In recommended range"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </androidx.cardview.widget.CardView>
 
@@ -212,7 +226,8 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:text="Light Level"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"  />
 
             <TextView
                 android:id="@+id/actualLight"
@@ -220,16 +235,22 @@
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/tempMain"
                 android:gravity="end|top"
-                android:text="actualLight"
-                android:textSize="18sp" />
+                android:paddingTop="20dp"
+                android:paddingEnd="80dp"
+                android:text="currentlight"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"  />
 
             <TextView
                 android:id="@+id/lightRange"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="match_parent"
                 android:gravity="bottom|end"
-                android:text="LightRangeDifference"
-                android:textSize="18sp" />
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
+                android:text="In recommended range"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
