@@ -1,7 +1,5 @@
 package via.sep4.Persistence;
 
-import android.util.JsonReader;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -98,7 +96,7 @@ public class WebClient {
     public static MiscAPI getMiscAPI() {
         return miscAPI;
     }
-    public static boolean token(String auth)
+    public static void token(String auth, final Callback<String> boolCallback)
     {
         String s = "Basic " + Base64.getEncoder().encodeToString(auth.getBytes());
         Call<String> tokenCall = getMiscAPI().getToken(s);
@@ -107,17 +105,19 @@ public class WebClient {
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.body() != null) {
                     tempJWT = response.body();
+                    specimenAPI = createService(SpecimenAPI.class, tempJWT);
+                    userAPI = createService(UserAPI.class, tempJWT);
+                    hardwareAPI = createService(HardwareAPI.class, tempJWT);
+                    statusAPI = createService(StatusAPI.class, tempJWT);
+                    boolCallback.onResponse(call, response);
+                    //callback chained to divert async to MutableLiveData, where we can use postValue,
+                    //so we don't have problems with returning values from async
                 }
-                specimenAPI = createService(SpecimenAPI.class, tempJWT);
-                userAPI = createService(UserAPI.class, tempJWT);
-                hardwareAPI = createService(HardwareAPI.class, tempJWT);
-                statusAPI = createService(StatusAPI.class, tempJWT);
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 System.out.println("AAAAA");
             }
         });
-        return true;
     }
 }

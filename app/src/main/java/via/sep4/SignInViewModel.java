@@ -7,6 +7,9 @@ import com.anychart.core.stock.indicators.AO;
 
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import via.sep4.Model.Data.AppData;
 import via.sep4.Model.Data.User;
 import via.sep4.Model.PersistenceHandler;
@@ -37,18 +40,30 @@ public class SignInViewModel extends ViewModel
     //TODO: ensure that login only happens if connection successful
     public void SignIn()
     {
-        boolean b = webHandler.token(user.getValue());
-        AppData appData = AppData.getInstance();
-        if (!b) {
-            String[] arr = appData.retrieveSavedUser();
-            if(arr[0].equals("") || arr[1].equals(""))
-            {
-                success.setValue(false);
+        webHandler.token(user.getValue(), new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                AppData appData = AppData.getInstance();
+                if(response.body() != null)
+                {
+                    appData.saveUser(user.getValue());
+                    success.postValue(true);
+                    /*String[] arr = appData.retrieveSavedUser();
+                    if(arr[0].equals("") || arr[1].equals(""))
+                    {
+                        success.postValue(false);
+                    }
+                    else {
+                        appData.saveUser(user.getValue());
+                        success.postValue(true);
+                    }*/
+                }
             }
-        }
-        else {
-            appData.saveUser(user.getValue());
-            success.setValue(true);
-        }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 }

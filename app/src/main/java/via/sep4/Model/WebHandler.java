@@ -32,10 +32,10 @@ public class WebHandler {
         return s;
     }
 
-    public boolean token(User user)
+    public void token(User user, Callback<String> booleanCallback)
     {
         String auth = user.getUsername() + ":" + user.getPassword();
-        return WebClient.token(auth);
+        WebClient.token(auth, booleanCallback);
     }
 
     public float getCurrentSensorData(int hardwareID, String src)
