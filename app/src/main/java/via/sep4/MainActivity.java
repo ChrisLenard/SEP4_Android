@@ -1,23 +1,20 @@
 package via.sep4;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import via.sep4.Model.Data.AppData;
-import via.sep4.Persistence.LocalPersistence;
+import via.sep4.Dashboard.AddMushroomDialogFragment;
+import via.sep4.Model.AppData;
 
 public class MainActivity extends AppCompatActivity implements AddMushroomDialogFragment.AddMushroomDialogListener {
     private BottomNavigationView bottomNavigationView;

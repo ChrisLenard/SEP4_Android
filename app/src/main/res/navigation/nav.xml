@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboard"
-        android:name="via.sep4.Dashboard"
+        android:name="via.sep4.Dashboard.Dashboard"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewSpecimen"
-        android:name="via.sep4.ViewSpecimen"
+        android:name="via.sep4.Viewspecimen.ViewSpecimen"
         android:label="fragment_view_specimen"
         tools:layout="@layout/fragment_view_specimen" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/signIn"
-        android:name="via.sep4.SignIn"
+        android:name="via.sep4.Signin.SignIn"
         android:label="SignIn"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/diary"
-        android:name="via.sep4.Diary"
+        android:name="via.sep4.Diary.Diary"
         android:label="fragment_diary"
         tools:layout="@layout/fragment_diary" >
         <action
@@ -46,12 +46,12 @@
     </fragment>
     <fragment
         android:id="@+id/visualisation"
-        android:name="via.sep4.visualisation"
+        android:name="via.sep4.Viewspecimen.visualisation"
         android:label="fragment_visualisation"
         tools:layout="@layout/fragment_visualisation" />
     <fragment
         android:id="@+id/addDiaryEntry"
-        android:name="via.sep4.addDiaryEntry"
+        android:name="via.sep4.Diary.addDiaryEntry"
         android:label="fragment_add_diary_entry"
         tools:layout="@layout/fragment_add_diary_entry" />
 </navigation>

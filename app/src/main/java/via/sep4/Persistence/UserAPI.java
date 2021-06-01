@@ -5,12 +5,11 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import via.sep4.Model.Data.User;
+import via.sep4.Model.User;
 
 public interface UserAPI {
     @Headers({ "Content-Type: application/json;charset=UTF-8"})

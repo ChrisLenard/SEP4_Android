@@ -12,8 +12,7 @@ import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import via.sep4.Model.Data.User;
-import via.sep4.Persistence.SpecimenAPI;
+import via.sep4.Model.User;
 import via.sep4.Persistence.UserAPI;
 import via.sep4.Persistence.WebClient;
 

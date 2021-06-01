@@ -7,12 +7,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import via.sep4.DiaryEntry;
-import via.sep4.Model.Data.Hardware;
-import via.sep4.Model.Data.SensorData;
-import via.sep4.Model.Data.Specimen;
-import via.sep4.Model.Data.Status;
-import via.sep4.Model.PersistenceHandler;
+import via.sep4.Diary.DiaryEntry;
+import via.sep4.Model.Hardware;
+import via.sep4.Model.SensorData;
+import via.sep4.Model.Specimen;
+import via.sep4.Model.Status;
 
 @Database(entities = {Specimen.class, SensorData.class, Hardware.class, Status.class, DiaryEntry.class}, version = 1)
 @TypeConverters({Converters.class})
