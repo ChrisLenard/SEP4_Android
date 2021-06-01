@@ -22,8 +22,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,7 +47,7 @@ public class DashboardViewModel extends ViewModel {
     private TextView shroomTextView;
     private LinearLayout shroomContainer;
     private List<Specimen> specimens;
-
+    
     //Sets variables used to create Mushroom, generates Grid
     public void setData(Context context, TableRow tableRow, ImageButton shroomButton, Drawable shroomButtonImage, TextView shroomText, LinearLayout shroomContainer, LifecycleOwner owner) {
         this.context = context;
@@ -57,6 +59,22 @@ public class DashboardViewModel extends ViewModel {
         mList = new MutableLiveData<>();
         List<Mushroom> mushroomList = new ArrayList<>();
         mList.setValue(mushroomList);
+//        WebClient.getSpecimenAPI().getSpecimens().enqueue(new Callback<ResponseBody>()
+//        {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
+//            {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t)
+//            {
+//                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAILURE");
+//                System.out.println(t.getMessage());
+//            }
+//        });
+        specimens = new ArrayList<>();
         WebClient.getSpecimenAPI().getSpecimens().enqueue(new Callback<List<Specimen>>()
         {
             @Override
@@ -66,15 +84,20 @@ public class DashboardViewModel extends ViewModel {
                 {
                     specimens.addAll(response.body());
                     for (Specimen specimen : specimens)
-                        mList.getValue().add(new Mushroom(specimen.getSpecimen_name()));
-                    mList.notify();
+                    {
+                        Mushroom temp = new Mushroom(specimen.getSpecimen_name());
+                        temp.setSpecimen_id(specimen.getSpecimen_key());
+                        addMushroom(temp);
+                    }
+                        //mList.getValue().add(new Mushroom(specimen.getSpecimen_name()));
                 }
             }
-        
+
             @Override
             public void onFailure(Call<List<Specimen>> call, Throwable t)
             {
-            
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAILURE");
+                System.out.println(t.getMessage());
             }
         });
         

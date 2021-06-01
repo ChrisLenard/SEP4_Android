@@ -18,7 +18,7 @@ public class Specimen {
     private float desired_air_temperature;
     private float desired_air_humidity;
     private float desired_air_co2;
-    private int hardware_id;
+    private String hardware_id;
 
     @Ignore
     private SensorData currentData;
@@ -87,11 +87,11 @@ public class Specimen {
         this.desired_air_co2 = desired_air_co2;
     }
 
-    public int getHardware_id() {
+    public String getHardware_id() {
         return hardware_id;
     }
 
-    public void setHardware_id(int hardware_id) {
+    public void setHardware_id(String hardware_id) {
         this.hardware_id = hardware_id;
     }
 

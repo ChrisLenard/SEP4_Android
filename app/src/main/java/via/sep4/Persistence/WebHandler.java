@@ -6,10 +6,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import via.sep4.Model.SensorData;
-import via.sep4.Model.SensorDataList;
 import via.sep4.Model.Specimen;
 import via.sep4.Model.User;
-import via.sep4.Persistence.WebClient;
 
 public class WebHandler {
     /**
@@ -48,10 +46,10 @@ public class WebHandler {
                 {
                     if (src.equals("co2"))
                     {
-                        ret[0] = response.body().getCurrent_air_co2();
+                        ret[0] = response.body().getAir_co2();
                     }
                     else if (src.equals("light")) {
-                        ret[0] = response.body().getCurrent_light();
+                        ret[0] = response.body().getLight_level();
                     }
                 }
             }
@@ -64,9 +62,8 @@ public class WebHandler {
         return ret[0];
     }
     
-    public SensorDataList getSensorDataList(int key)
+    public static void setFromDateToDate()
     {
-        final SensorDataList[] ret = new SensorDataList[1];
         if(WebClient.date_from == 0)
             WebClient.date_from = System.currentTimeMillis()-3600000; //from 1 hour ago
         else
@@ -77,24 +74,5 @@ public class WebHandler {
             }
         }
         WebClient.date_to = System.currentTimeMillis();
-        Call<SensorDataList> call = WebClient.getSpecimenAPI().getSpecimenSensor(key,WebClient.date_from,WebClient.date_to);
-        synchronized(this)
-        {
-            call.enqueue(new Callback<SensorDataList>()
-            {
-                @Override
-                public void onResponse(Call<SensorDataList> call, Response<SensorDataList> response)
-                {
-                    ret[0] = response.body();
-                }
-        
-                @Override
-                public void onFailure(Call<SensorDataList> call, Throwable t)
-                {
-            
-                }
-            });
-        }
-        return ret[0];
     }
 }

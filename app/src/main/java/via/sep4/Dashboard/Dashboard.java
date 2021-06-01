@@ -3,6 +3,8 @@ package via.sep4.Dashboard;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
@@ -17,8 +19,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import via.sep4.Model.Mushroom;
+import via.sep4.Model.Specimen;
+import via.sep4.Persistence.WebClient;
 import via.sep4.R;
 
 /**
@@ -108,7 +116,14 @@ public class Dashboard extends Fragment {
 //            }
 
 //            dashboardViewModel.getMushroomList().observe(getViewLifecycleOwner(), mushrooms -> AddMushroom(dashboardViewModel.getMushroomList().getValue().get(mushrooms.size() -1).getName()));
-
+            dashboardViewModel.getMushroomList().observe(getViewLifecycleOwner(), new Observer<List<Mushroom>>()
+            {
+                @Override
+                public void onChanged(List<Mushroom> mushrooms)
+                {
+                    UpdateGrid();
+                }
+            });
             buttonAddMushroom.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

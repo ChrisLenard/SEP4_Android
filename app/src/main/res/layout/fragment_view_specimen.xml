@@ -107,7 +107,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/TempRange"
+                android:id="@+id/rangeTemp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|end"
@@ -120,7 +120,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/humidity"
+            android:id="@+id/humiditycard"
             android:layout_width="372dp"
             android:layout_height="108dp"
             android:layout_gravity="center"
@@ -130,7 +130,7 @@
             android:foreground="?android:attr/selectableItemBackground">
 
             <TextView
-                android:id="@+id/humMain"
+                android:id="@+id/humi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_blue"
@@ -153,7 +153,7 @@
                 android:textSize="24sp"  />
 
             <TextView
-                android:id="@+id/humRange"
+                android:id="@+id/rangeHum"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|end"
@@ -165,7 +165,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/dioxide"
+            android:id="@+id/CO2"
             android:layout_width="372dp"
             android:layout_height="108dp"
             android:layout_gravity="center"
@@ -175,7 +175,7 @@
             android:foreground="?android:attr/selectableItemBackground">
 
             <TextView
-                android:id="@+id/dioxideMain"
+                android:id="@+id/co2level"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_red"
@@ -198,7 +198,7 @@
                 android:textSize="24sp"  />
 
             <TextView
-                android:id="@+id/co2Range"
+                android:id="@+id/rangeCO2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|end"
@@ -210,7 +210,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/light"
+            android:id="@+id/lightcard"
             android:layout_width="372dp"
             android:layout_height="108dp"
             android:layout_gravity="center"
@@ -242,7 +242,7 @@
                 android:textSize="24sp"  />
 
             <TextView
-                android:id="@+id/lightRange"
+                android:id="@+id/rangeLight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|end"

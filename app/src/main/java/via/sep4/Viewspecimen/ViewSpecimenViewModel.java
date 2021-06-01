@@ -62,19 +62,19 @@ public class ViewSpecimenViewModel extends ViewModel
         //return persistenceHandler.getAllSensorData(specimenKey);
     }
     
-    public void getSensorData() {
-        service.execute(() -> {
-            
-            sensorLiveData.postValue(webHandler.getSensorDataList(specimenKey));
-            try
-            {
-                Thread.sleep(300000);
-            } catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-        });
-        
-    }
+//    public void getSensorData() {
+//        service.execute(() -> {
+//
+//            sensorLiveData.postValue(webHandler.getSensorDataList(specimenKey));
+//            try
+//            {
+//                Thread.sleep(300000);
+//            } catch (InterruptedException e)
+//            {
+//                e.printStackTrace();
+//            }
+//        });
+//
+//    }
 
 }
