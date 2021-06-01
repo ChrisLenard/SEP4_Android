@@ -40,6 +40,9 @@ public class PersistenceHandler {
         @Query("SELECT * FROM hardware WHERE hardware_key = (:hardwareKey)")
         Hardware getHardware(int hardwareKey);
 
+        @Query("SELECT * FROM hardware")
+        LiveData<List<Hardware>> getHardwareList();
+
         @Insert
         void insertAll(Hardware... hardwares);
 
