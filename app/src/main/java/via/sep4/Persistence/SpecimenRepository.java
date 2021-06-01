@@ -53,11 +53,6 @@ public class SpecimenRepository {
         return executorService.submit(call);
     }
 
-    public void insert(Specimen specimen)
-    {
-        executorService.execute(() -> specimenDAO.insertAll(specimen));
-    }
-
     public void insertAll(Specimen... specimens)
     {
         executorService.execute(() -> specimenDAO.insertAll(specimens));
