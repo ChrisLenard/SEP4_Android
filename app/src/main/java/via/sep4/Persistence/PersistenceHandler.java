@@ -52,6 +52,9 @@ public class PersistenceHandler {
         @Query("SELECT * FROM specimen WHERE specimen_key = (:specimenKey)")
         Specimen getSpecimen(int specimenKey);
 
+        @Query("SELECT * FROM specimen")
+        LiveData<List<Specimen>> getAllSpecimens();
+
         @Query("SELECT * FROM sensordata WHERE specimenKey = (:specimenKey1)")
         List<SensorData> getSensorDataBySpecimen(int specimenKey1);
 
