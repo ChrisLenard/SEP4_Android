@@ -5,7 +5,10 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 @Entity(tableName = "diary_table")
 public class DiaryEntry implements Serializable
 {

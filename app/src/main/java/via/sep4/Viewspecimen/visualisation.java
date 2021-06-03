@@ -31,7 +31,10 @@ import java.util.List;
 
 import via.sep4.Model.SensorData;
 import via.sep4.R;
-
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class visualisation extends Fragment
 {
 	View v;

@@ -1,4 +1,4 @@
-package via.sep4.Diary;
+package via.sep4.Persistence;
 
 import android.app.Application;
 
@@ -10,9 +10,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import via.sep4.Persistence.PersistenceHandler;
-import via.sep4.Persistence.AppDatabase;
+import via.sep4.Diary.DiaryEntry;
 
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class DiaryEntryRepository
 {
 	private static DiaryEntryRepository instance;

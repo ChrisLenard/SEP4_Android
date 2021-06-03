@@ -30,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ViewSpecimen#newInstance} factory method to
- * create an instance of this fragment.
+ * @author Bogdan Mezei
+ * @version 1.0
  */
 public class ViewSpecimen extends Fragment {
 

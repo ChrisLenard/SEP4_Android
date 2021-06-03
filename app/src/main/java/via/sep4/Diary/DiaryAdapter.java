@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import via.sep4.R;
-
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>
 {
 	private ArrayList<DiaryEntry> mEntries;

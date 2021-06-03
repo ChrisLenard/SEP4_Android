@@ -59,12 +59,12 @@
         tools:layout="@layout/fragment_add_diary_entry" />
     <fragment
         android:id="@+id/fragment_info"
-        android:name="via.sep4.InfoFragment"
+        android:name="via.sep4.Info.InfoFragment"
         android:label="Info"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/selectStage"
-        android:name="via.sep4.selectStage"
+        android:name="via.sep4.Viewspecimen.selectStage"
         android:label="Select Stage"
         tools:layout="@layout/fragment_select_stage" >
         <action

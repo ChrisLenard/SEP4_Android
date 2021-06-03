@@ -7,6 +7,12 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import via.sep4.Persistence.DiaryEntryRepository;
+
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class DiaryViewModel extends AndroidViewModel
 {
 	

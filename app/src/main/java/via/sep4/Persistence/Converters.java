@@ -3,7 +3,10 @@ package via.sep4.Persistence;
 import androidx.room.TypeConverter;
 
 import java.util.Date;
-
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class Converters
 {
 	

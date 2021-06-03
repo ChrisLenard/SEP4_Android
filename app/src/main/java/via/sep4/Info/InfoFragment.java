@@ -1,4 +1,4 @@
-package via.sep4;
+package via.sep4.Info;
 
 import android.os.Bundle;
 
@@ -8,10 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import via.sep4.R;
+
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link InfoFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * @author Bogdan Mezei
+ * @version 1.0
  */
 public class InfoFragment extends Fragment {
 

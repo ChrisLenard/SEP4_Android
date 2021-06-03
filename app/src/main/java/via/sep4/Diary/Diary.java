@@ -18,7 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import via.sep4.R;
-
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class Diary extends Fragment implements DiaryAdapter.OnListItemClickListener
 {
 

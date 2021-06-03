@@ -6,9 +6,11 @@ import androidx.lifecycle.AndroidViewModel;
 
 import java.util.concurrent.Future;
 
-import via.sep4.Diary.DiaryEntry;
-import via.sep4.Diary.DiaryEntryRepository;
-
+import via.sep4.Persistence.DiaryEntryRepository;
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class addDiaryEntryViewModel extends AndroidViewModel
 {
 	

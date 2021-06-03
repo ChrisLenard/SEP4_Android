@@ -15,7 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import via.sep4.R;
-
+/**
+ * @author Bogdan Mezei
+ * @version 1.0
+ */
 public class addDiaryEntry extends Fragment
 {
 	addDiaryEntryViewModel viewModel;

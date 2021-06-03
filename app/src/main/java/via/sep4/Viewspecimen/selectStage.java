@@ -1,4 +1,4 @@
-package via.sep4;
+package via.sep4.Viewspecimen;
 
 import android.os.Bundle;
 
@@ -21,6 +21,7 @@ import retrofit2.Response;
 import via.sep4.Model.Mushroom;
 import via.sep4.Model.Status;
 import via.sep4.Persistence.WebClient;
+import via.sep4.R;
 
 public class selectStage extends Fragment
 {

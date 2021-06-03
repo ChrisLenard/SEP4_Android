@@ -1,4 +1,4 @@
-package via.sep4;
+package via.sep4.Deprecated;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +15,9 @@ import retrofit2.Response;
 import via.sep4.Model.User;
 import via.sep4.Persistence.UserAPI;
 import via.sep4.Persistence.WebClient;
+import via.sep4.R;
 
+@Deprecated
 public class RetrofitTestActivity extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
