@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements AddMushroomDialog
         //bottomNavigationView.setOnNavigationItemSelectedListener(navigationListener);
         bottomNavigationView.setVisibility(View.INVISIBLE); //To not see navigation bar on Sign In menu
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.item_home, R.id.dashboard, R.id.item_settings).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.fragment_info, R.id.dashboard).build();
         //avigation.setViewNavController(getCurrentFocus().findViewById(R.id.bottomNavigationView), new NavController(getApplicationContext()));
         NavController navController = Navigation.findNavController(this, R.id.fragmentbox);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -40,27 +41,23 @@ public class MainActivity extends AppCompatActivity implements AddMushroomDialog
         //getSupportFragmentManager().beginTransaction()
                 //.replace(R.id.fragmentbox, new SignIn()).commit();
     }
-
-    /*@Override
-    public void applyData(String mushroomName, Dashboard dash) {
-        dash.AddMushroom(mushroomName);
-    }*/
-
-    //Bottom Navigation Bar Listener
-    /*rivate BottomNavigationView.OnNavigationItemSelectedListener navigationListener = item -> {
-        Fragment selectedFragment = null;
-        int itemId = item.getItemId();
-        if (itemId == R.id.item_home) {
-            selectedFragment = new InfoFragment();
-        } else if (itemId == R.id.item_dashboard) {
-            selectedFragment = new Dashboard();
-        } else if (itemId == R.id.item_settings) {
-            selectedFragment = new SettingsFragment();
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
-
-        //Begin Transaction
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentbox, selectedFragment).commit();
-        return true;
-    };*/
+        return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ) {
+            getFragmentManager().popBackStack();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 }

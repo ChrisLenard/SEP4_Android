@@ -13,7 +13,7 @@ import via.sep4.Model.SensorData;
 import via.sep4.Model.Specimen;
 import via.sep4.Model.Status;
 
-@Database(entities = {Specimen.class, SensorData.class, Hardware.class, Status.class, DiaryEntry.class}, version = 1)
+@Database(entities = {Specimen.class, SensorData.class, Hardware.class, Status.class, DiaryEntry.class}, version = 2)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     

@@ -18,7 +18,7 @@
             android:id="@+id/MushroomName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MushroomName"
+            android:text="Loading..."
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -26,7 +26,7 @@
             android:id="@+id/stage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stage 3 - Pinning"
+            android:text="Loading..."
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -51,22 +51,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:text="Diary" />
-
-            <Button
-                android:id="@+id/alarmButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:text="Alarm" />
-
-            <Button
-                android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:text="Delete" />
 
         </LinearLayout>
 
@@ -102,7 +86,7 @@
                 android:gravity="right|top"
                 android:paddingTop="20dp"
                 android:paddingEnd="80dp"
-                android:text="XX C"
+                android:text="Loading..."
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
@@ -148,7 +132,7 @@
                 android:gravity="end|top"
                 android:paddingTop="20dp"
                 android:paddingEnd="80dp"
-                android:text="currenthum"
+                android:text="Loading..."
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"  />
 
@@ -193,7 +177,7 @@
                 android:gravity="end|top"
                 android:paddingTop="20dp"
                 android:paddingEnd="80dp"
-                android:text="current co2"
+                android:text="Loading..."
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"  />
 
@@ -237,7 +221,7 @@
                 android:gravity="end|top"
                 android:paddingTop="20dp"
                 android:paddingEnd="80dp"
-                android:text="currentlight"
+                android:text="Loading..."
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"  />
 

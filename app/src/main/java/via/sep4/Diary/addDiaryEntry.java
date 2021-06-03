@@ -51,6 +51,7 @@ public class addDiaryEntry extends Fragment
 			{
 				DiaryEntry toAdd = new DiaryEntry(entry.getText().toString(), Calendar.getInstance().getTime());
 				viewModel.insert(toAdd);
+				getActivity().onBackPressed();
 			}
 		});
 		if(getArguments() != null)
@@ -67,11 +68,15 @@ public class addDiaryEntry extends Fragment
 				public void onClick(View v)
 				{
 					viewModel.delete(toEdit);
+					getActivity().onBackPressed();
 				}
 			});
 		}
 		else
+		{
+			date.setVisibility(View.GONE);
 			delete.setVisibility(View.GONE);
+		}
 		return root;
 	}
 }

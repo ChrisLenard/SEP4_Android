@@ -4,11 +4,14 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(foreignKeys = {@ForeignKey(entity = Specimen.class,
         parentColumns = "specimen_key",
         childColumns = "specimen_key"
 )})
-public class Status {
+public class Status implements Serializable
+{
 
     @PrimaryKey
     private int entry_key;

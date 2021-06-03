@@ -18,6 +18,7 @@ import via.sep4.Model.Mushroom;
 import androidx.navigation.Navigation;
 
 import via.sep4.Model.SensorData;
+import via.sep4.Model.Status;
 import via.sep4.Persistence.WebClient;
 import via.sep4.Persistence.WebHandler;
 import via.sep4.R;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 public class ViewSpecimen extends Fragment {
 
     Button diaryButton;
+    Button stageButton;
     
     CardView temperature;
     CardView humidity;
@@ -53,7 +56,11 @@ public class ViewSpecimen extends Fragment {
     TextView rangeCO2;
     TextView rangeLight;
     
+    TextView stage;
+    TextView MushroomName;
+    
     WebHandler webHandler;
+    Status status;
     
 
     // TODO: Rename parameter arguments, choose names that match
@@ -121,6 +128,7 @@ public class ViewSpecimen extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_view_specimen, container, false);
         diaryButton = root.findViewById(R.id.diaryButton);
+        stageButton = root.findViewById(R.id.stageButton);
         
         temperature = root.findViewById(R.id.temperature);
         humidity = root.findViewById(R.id.humiditycard);
@@ -137,11 +145,33 @@ public class ViewSpecimen extends Fragment {
         rangeCO2 = root.findViewById(R.id.rangeCO2);
         rangeLight = root.findViewById(R.id.rangeLight);
         
+        stage = root.findViewById(R.id.stage);
+        MushroomName = root.findViewById(R.id.MushroomName);
+        
         mushroom = (Mushroom) getArguments().getSerializable("mushroom");
+        MushroomName.setText(mushroom.getName());
     
+        Call<List<Status>> call = WebClient.getStatusAPI().getSpecimenStatusBySpecimenKey(mushroom.getSpecimen_id());
+        call.enqueue(new Callback<List<Status>>()
+                     {
+    
+                         @Override
+                         public void onResponse(Call<List<Status>> call, Response<List<Status>> response)
+                         {
+                             status = response.body().get(response.body().size()-1);
+                            stage.setText(response.body().get(response.body().size()-1).getStage_name());
+                         }
+    
+                         @Override
+                         public void onFailure(Call<List<Status>> call, Throwable t)
+                         {
+        
+                         }
+                     });
+        
         WebHandler.setFromDateToDate();
-        Call<ArrayList<SensorData>> call = WebClient.getSpecimenAPI().getSpecimenSensor(mushroom.getSpecimen_id(), WebClient.date_from,WebClient.date_to);
-        call.enqueue(new Callback<ArrayList<SensorData>>()
+        Call<ArrayList<SensorData>> callsensor = WebClient.getSpecimenAPI().getSpecimenSensor(mushroom.getSpecimen_id(), WebClient.date_from,WebClient.date_to);
+        callsensor.enqueue(new Callback<ArrayList<SensorData>>()
         {
             @Override
             public void onResponse(Call<ArrayList<SensorData>> call, Response<ArrayList<SensorData>> response)
@@ -250,6 +280,18 @@ public class ViewSpecimen extends Fragment {
             {
                 NavController nav = Navigation.findNavController(root);
                 nav.navigate(R.id.action_viewSpecimen_to_diary);
+            }
+        });
+        stageButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", status.getEntry_key());
+                bundle.putSerializable("status",status);
+                NavController nav = Navigation.findNavController(root);
+                nav.navigate(R.id.action_viewSpecimen_to_selectStage,bundle);
             }
         });
         actualTemp.setText("");
