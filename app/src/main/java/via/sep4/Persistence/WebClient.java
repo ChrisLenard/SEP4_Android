@@ -1,5 +1,10 @@
 package via.sep4.Persistence;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.Base64;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -8,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class WebClient {
     /**
@@ -15,13 +21,20 @@ public class WebClient {
      * @version 1.0
      * This class is responsible for implementing the Retrofit library, enabling connections to the webservice.
      */
-
+    public static long date_from = 0;
+    public static long date_to = 0;
+    
     //URL for connection
-    private static final String BASE_URL = "https://app.swaggerhub.com/apis-docs/C4T4PHR4CT/SEP4";
+    private static final String BASE_URL = "https://mushroompp.nlevi.dev";
+
+    private static final Gson gson = new GsonBuilder()
+            .setLenient()
+            .create();
 
     private static final Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create());
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson));
 
     private static Retrofit retrofit = retrofitBuilder.build();
 
@@ -55,7 +68,7 @@ public class WebClient {
             httpClient.addInterceptor( chain -> {
                 Request original = chain.request();
                 Request.Builder builder1 = original.newBuilder()
-                        .header("Authorization", token);
+                        .header("Authorization", "Bearer " + token);
                 Request request = builder1.build();
                 return chain.proceed(request);
             });
@@ -82,26 +95,28 @@ public class WebClient {
     public static MiscAPI getMiscAPI() {
         return miscAPI;
     }
-    public static boolean token(String auth)
+    public static void token(String auth, final Callback<String> boolCallback)
     {
-        final boolean[] ret = {false};
-        Call<String> tokenCall = getMiscAPI().getToken(auth);
+        String s = "Basic " + Base64.getEncoder().encodeToString(auth.getBytes());
+        Call<String> tokenCall = getMiscAPI().getToken(s);
         tokenCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.body() != null) {
                     tempJWT = response.body();
+                    specimenAPI = createService(SpecimenAPI.class, tempJWT);
+                    userAPI = createService(UserAPI.class, tempJWT);
+                    hardwareAPI = createService(HardwareAPI.class, tempJWT);
+                    statusAPI = createService(StatusAPI.class, tempJWT);
+                    boolCallback.onResponse(call, response);
+                    //callback chained to divert async to MutableLiveData, where we can use postValue,
+                    //so we don't have problems with returning values from async
                 }
-                specimenAPI = createService(SpecimenAPI.class, tempJWT);
-                userAPI = createService(UserAPI.class, tempJWT);
-                hardwareAPI = createService(HardwareAPI.class, tempJWT);
-                statusAPI = createService(StatusAPI.class, tempJWT);
-                ret[0] = true;
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                System.out.println("AAAAA");
             }
         });
-        return ret[0];
     }
 }

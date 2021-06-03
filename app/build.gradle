@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "via.sep4"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -58,6 +58,7 @@ dependencies {
 
     //AnyChart
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
 
     def room_version = "2.3.0"
 

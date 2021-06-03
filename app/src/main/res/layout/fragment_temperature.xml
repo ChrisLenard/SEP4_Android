@@ -5,13 +5,12 @@
     android:id="@+id/layout_temperature"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TemperatureFragment">
+    tools:context=".Deprecated.TemperatureFragment">
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:editable="false"
         android:text="Temperature"
         android:textAlignment="center"
         android:textSize="36sp"
@@ -20,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/layout_temperature_text1"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -70,7 +69,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/layout_temperature_recommended"
+            android:id="@+id/range"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -92,17 +91,7 @@
         </com.anychart.AnyChartView>
     </LinearLayout>
 
-    <com.anychart.AnyChartView
-        android:id="@+id/anychart_temp_graph"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
 
-    </com.anychart.AnyChartView>
 
     <ProgressBar
         android:id="@+id/prog_temp_chart"

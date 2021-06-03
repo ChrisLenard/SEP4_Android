@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewSpecimen">
+    tools:context=".Viewspecimen.ViewSpecimen">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,19 +35,19 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button_viewspecimen_1"
+                android:id="@+id/diaryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button_viewspecimen_2"
+                android:id="@+id/stageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button_viewspecimen_3"
+                android:id="@+id/alarmButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />

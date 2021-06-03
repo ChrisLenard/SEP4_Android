@@ -3,7 +3,7 @@
     <size android:height="10dp" />
     <gradient
         android:startColor="@color/purple_500"
-        android:endColor="@color/white"
+        android:endColor="#D7FFFE"
         android:angle="90"/>
     <corners android:radius="20dp"/>
     <padding android:left="0dp" android:top="0dp" android:right="0dp" android:bottom="0dp" />

@@ -5,7 +5,7 @@
     android:id="@+id/co2_constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CO2Fragment">
+    tools:context=".Deprecated.CO2Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"

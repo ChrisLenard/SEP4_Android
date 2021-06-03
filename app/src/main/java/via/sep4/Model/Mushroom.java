@@ -10,6 +10,7 @@ public class Mushroom implements Serializable {
     private String name;
     private TableRow parent;
     private LinearLayout container;
+    private int specimen_id;
 
     public Mushroom(String name){
         this.name = name;
@@ -34,7 +35,17 @@ public class Mushroom implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    public int getSpecimen_id()
+    {
+        return specimen_id;
+    }
+    
+    public void setSpecimen_id(int specimen_id)
+    {
+        this.specimen_id = specimen_id;
+    }
+    
     public String getName() {
         return name;
     }
