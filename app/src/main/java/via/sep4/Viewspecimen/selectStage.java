@@ -54,7 +54,7 @@ public class selectStage extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				Call<Status> call = WebClient.getStatusAPI().updateStatus(status,id);
+				/*Call<Status> call = WebClient.getStatusAPI().updateStatus(status,id);
 				call.enqueue(new Callback<Status>()
 				{
 					
@@ -68,6 +68,18 @@ public class selectStage extends Fragment
 					public void onFailure(Call<Status> call, Throwable t)
 					{
 					
+					}
+				});*/
+				Call<Status> call = WebClient.getStatusAPI().createStatus(status.getSpecimen_key(), status);
+				call.enqueue(new Callback<Status>() {
+					@Override
+					public void onResponse(Call<Status> call, Response<Status> response) {
+
+					}
+
+					@Override
+					public void onFailure(Call<Status> call, Throwable t) {
+
 					}
 				});
 				NavController nav = Navigation.findNavController(root);
